@@ -5,12 +5,12 @@ package simplechat;
  */
 public class objPlayer {
     
-    private Object[] objInStart;//Pieces in the START
-    private Object[] objPiece = new Object[4];//Pieces
-    private Object[] objInHome = new Object[4];//Pieces in Home
+    public Object[] objInStart;//Pieces in the START
+    public Object[] objPiece = new Object[4];//Pieces
+    public Object[] objInHome = new Object[4];//Pieces in Home
 //    private objPiece[] gamePiece = new objPiece[4];
-    private String strUserName;//Username
-    private char pColour;//Player Colour
+    public String strUserName;//Username
+    public char pColour;//Player Colour
     
     //Empty constructor
     public objPlayer(){}
