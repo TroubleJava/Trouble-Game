@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/M:/Trouble-Game/Trouble/src/simplechat/Trouble.java</file>
-            <file>file:/M:/Trouble-Game/Trouble/src/simplechat/GUIClientConsole.java</file>
-            <file>file:/M:/Trouble-Game/Trouble/src/simplechat/objPlayer.java</file>
+            <file>file:/M:/Sem%203/JAVAGAME/Trouble-Game/Trouble/src/simplechat/ClientConsole.java</file>
+            <file>file:/M:/Sem%203/JAVAGAME/Trouble-Game/Trouble/src/simplechat/objPlayer.java</file>
+            <file>file:/M:/Sem%203/JAVAGAME/Trouble-Game/Trouble/src/simplechat/Trouble.java</file>
+            <file>file:/M:/Sem%203/JAVAGAME/Trouble-Game/Trouble/src/simplechat/EchoServer.java</file>
+            <file>file:/M:/Sem%203/JAVAGAME/Trouble-Game/Trouble/src/simplechat/GUIClientConsole.java</file>
         </group>
     </open-files>
 </project-private>
