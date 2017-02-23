@@ -21,6 +21,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
     private JButton sendB = new JButton("Send Message");
     private JButton quitB = new JButton("Quit Application");
     private JButton pop_O_Matic_Bubble = new JButton("P O P");
+    private JButton playTroubleB = new JButton("Play Trouble");
     
     private JButton board1 = new JButton("-");
     private JButton board2 = new JButton("-");
@@ -295,16 +296,21 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                 board28.setEnabled(false);
                 c.gridx = 2;
                 playArea.add(homeRed1,c);
+                homeRed1.setEnabled(false);
                 c.gridx = 3;
                 playArea.add(insideBoard1,c);
                 c.gridx = 4;
                 playArea.add(homeYellow4,c);
+                homeYellow4.setEnabled(false);
                 c.gridx = 5;
                 playArea.add(homeYellow3,c);
+                homeYellow3.setEnabled(false);
                 c.gridx = 6;
                 playArea.add(homeYellow2,c);
+                homeYellow2.setEnabled(false);
                 c.gridx = 7;
                 playArea.add(homeYellow1,c);
+                homeYellow1.setEnabled(false);
                 c.gridx = 8;
                 playArea.add(board9,c);
                 board9.setEnabled(false);
@@ -318,6 +324,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                     board27.setEnabled(false);
                     c.gridx = 2;
                     playArea.add(homeRed2,c);
+                    homeRed2.setEnabled(false);
                     c.gridx = 3;
                     playArea.add(insideBoard2,c);
                     c.gridx = 4;
@@ -341,6 +348,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                         board26.setEnabled(false);
                         c.gridx = 2;
                         playArea.add(homeRed3,c);
+                        homeRed3.setEnabled(false);
                         c.gridx = 3;
                         playArea.add(insideBoard7,c);
                         c.gridx = 4;
@@ -353,6 +361,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                         playArea.add(insideBoard8,c);
                         c.gridx = 7;
                         playArea.add(homeBlue4,c);
+                        homeBlue4.setEnabled(false);
                         c.gridx = 8;
                         playArea.add(board11,c);
                         board11.setEnabled(false);
@@ -366,12 +375,14 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                             board25.setEnabled(false);
                             c.gridx = 2;
                             playArea.add(homeRed4,c);
+                            homeRed4.setEnabled(false);
                             c.gridx = 3;
                             playArea.add(insideBoard9,c);
                             c.gridx = 6;
                             playArea.add(insideBoard10,c);
                             c.gridx = 7;
                             playArea.add(homeBlue3,c);
+                            homeBlue3.setEnabled(false);
                             c.gridx = 8;
                             playArea.add(board12,c);
                             board12.setEnabled(false);
@@ -395,6 +406,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                                 playArea.add(insideBoard15,c);
                                 c.gridx = 7;
                                 playArea.add(homeBlue2,c);
+                                homeBlue2.setEnabled(false);
                                 c.gridx = 8;
                                 playArea.add(board13,c);
                                 board13.setEnabled(false);
@@ -408,16 +420,21 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                                     board23.setEnabled(false);
                                     c.gridx = 2;
                                     playArea.add(homeGreen1,c);
+                                    homeGreen1.setEnabled(false);
                                     c.gridx = 3;
                                     playArea.add(homeGreen2,c);
+                                    homeGreen2.setEnabled(false);
                                     c.gridx = 4;
                                     playArea.add(homeGreen3,c);
+                                    homeGreen3.setEnabled(false);
                                     c.gridx = 5;
                                     playArea.add(homeGreen4,c);
+                                    homeGreen4.setEnabled(false);
                                     c.gridx = 6;
                                     playArea.add(insideBoard16,c);
                                     c.gridx = 7;
                                     playArea.add(homeBlue1,c);
+                                    homeBlue1.setEnabled(false);
                                     c.gridx = 8;
                                     playArea.add(board14,c);
                                     board14.setEnabled(false);
@@ -500,7 +517,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
         
         bottom.add(blank7LB);
         bottom.add(blank8LB);
-        bottom.add(blank9LB);
+        bottom.add(playTroubleB);
         
         bottom.add(hostTxF);
         bottom.add(blank10LB);
@@ -516,6 +533,18 @@ public class GUIClientConsole extends JFrame implements ChatIF {
 		  	 	
 	setVisible(true);
         
+        playTroubleB.addActionListener( new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                send("#sendTrouble " + messageTxF.getText());
+            }
+        });
+        pop_O_Matic_Bubble.addActionListener( new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                send("#roll");
+            }
+        });
         sendB.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {

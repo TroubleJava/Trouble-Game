@@ -79,6 +79,9 @@ public class EchoServer extends AbstractServer
     }
     
     public void handleTrouble(Trouble tr){
+        
+        String message = msg.toString();
+        
         tr.switchActivePlayer();
         sendToAClient(tr,tr.getCurrentPlayer());
     }

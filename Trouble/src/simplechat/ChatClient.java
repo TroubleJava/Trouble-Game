@@ -18,7 +18,7 @@ public class ChatClient extends AbstractClient
    */
     ChatIF clientUI; 
 
-  
+    Trouble game;
   //Constructors ****************************************************
   
   /**
@@ -54,7 +54,16 @@ public class ChatClient extends AbstractClient
     @Override
     public void handleMessageFromServer(Object msg) 
     {
-        clientUI.display(msg.toString());
+        if(msg instanceof Trouble){
+            Trouble tr = (Trouble)(msg);
+            game = tr;
+            //update board?
+            //((GUIClientConsole)clientUI).displayBoard(ttt);
+            clientUI.display("Your move Chum!");
+        }
+        else{
+            clientUI.display(msg.toString());
+        }
     }
   /**
    * This method handles all data coming from the UI            
@@ -120,6 +129,9 @@ public class ChatClient extends AbstractClient
             catch(Exception e){
                 e.printStackTrace();
             }
+        }
+        else if(message.startsWith("#roll")){
+            game.
         }
         else if(message.startsWith("#logOn")){
             try{
