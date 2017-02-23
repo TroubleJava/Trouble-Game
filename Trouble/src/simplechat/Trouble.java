@@ -19,7 +19,7 @@ public class Trouble implements Serializable {
     private objPlayer player3;
     private objPlayer player4;
     private String strCurrentPlayer;
-    private objTHEGame[] board;
+    private objPlayer[] board;
 
     /**
      *
@@ -107,14 +107,14 @@ public class Trouble implements Serializable {
     /**
      * @return the objTHEGame
      */
-    public objTHEGame[] getBoard() {
+    public objPlayer[] getBoard() {
         return board;
     }
 
     /**
      * @param objTHEGame the objTHEGame to set
      */
-    public void setBoard(objTHEGame[] board) {
+    public void setBoard(objPlayer[] board) {
         this.board = board;
     }
 }

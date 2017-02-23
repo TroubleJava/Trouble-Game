@@ -14,7 +14,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class objTHEGame {
 
     Trouble tr = new Trouble();
-    private Object objBoard[] = tr.getBoard();
+    private objPlayer objBoard[] = tr.getBoard();
     objPlayer op = new objPlayer();
     public int currentRoll;
     private boolean moveFromStart = false;
@@ -42,13 +42,13 @@ public class objTHEGame {
                 position = op.getHomeIndex(player);
             } else if (op.objInStart[j] != piece) {
                 for (int i = 0; i <= objBoard.length; i++) { //Loop through array of board
-                    if (objBoard[i] == piece) {
+                    if (objBoard[i] == op) {
                         position = i;
                     }
                 }
             } else if (op.objInHome[j] != piece) {
                 for (int i = 0; i <= objBoard.length; i++) { //Loop through array of board
-                    if (objBoard[i] == piece) {
+                    if (objBoard[i] == op) {
                         position = i;
                     }
                 }
@@ -59,7 +59,7 @@ public class objTHEGame {
 
     //When a player's turn is started, this should be the first method that runs
     public void onTurnStart() {
-        Object[] piece = new Object[4];
+        Object[] piece = op.objPiece;
         char currentPlayer = op.getColour(); //Current Player
         int position = piecePosition(piece);
         int roll = rollDie(); //Get roll
@@ -69,7 +69,7 @@ public class objTHEGame {
         if (moveFromStart == true && checkStart() == true) {
             if (roll == 6) { //Exit the start zone    
                 //Sets the piece position to the start position             
-                objBoard[position] = piece;
+                objBoard[position] = op;
             } else {
                 //Don't move
                 checkWin(); //Calling checkWin because this will always end the turn                
@@ -91,11 +91,11 @@ public class objTHEGame {
 
     //Check start to see if there are still pieces in it
     public boolean checkStart() {
-        boolean isSomeoneHome = false;
-        if (op.getNumInStart() != 0) {
-            isSomeoneHome = true;
+        boolean isSomeoneInStart = false;
+        if (op.getStartCount() != 0) {
+            isSomeoneInStart = true;
         }
-        return isSomeoneHome;
+        return isSomeoneInStart;
     }
     //Player movement
     //Takes player's piece and their roll
@@ -107,13 +107,13 @@ public class objTHEGame {
             //Check if the landed on piece is a different players
             if (op.getColour() != op.getColour()) {
                 //Bounce
-                char landedOnPiece = 
+                char landedOnPiece = objBoard[pos + n].getColour();
                 int bounceToHome = op.getHomeIndex(landedOnPiece);
                 //Maybe change so that I pass in a variable
                     //that sets the position
                 objBoard[pos + n] = null;
-                objBoard[pos + n] = piece;
-                objBoard[bounceToHome] = bounceToHome;
+                objBoard[pos + n] = op;
+                objBoard[bounceToHome] = op;
             //Landed on your own piece which is INVALID
             } else {
                 //Select new piece?
@@ -127,7 +127,7 @@ public class objTHEGame {
             //Destroy old piece before move
             objBoard[pos] = null;
             //Move
-            objBoard[pos + n] = piece;
+            objBoard[pos + n] = op;
         }
     }
     //Last thing to do on a turn
