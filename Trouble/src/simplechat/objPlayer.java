@@ -7,7 +7,9 @@ public class objPlayer {
     
     public Object[] objInStart;//Pieces in the START
     public Object[] objPiece = new Object[4];//Pieces
-    public Object[] objInHome = new Object[4];//Pieces in Home
+//    public Object[] objInHome = new Object[4];//Pieces in Home
+    
+    public int inHome;
 //    private objPiece[] gamePiece = new objPiece[4];
     public String strUserName;//Username
     public char pColour;//Player Colour
@@ -31,10 +33,10 @@ public class objPlayer {
         objInStart[3]=colour;
         
         //Start HOME as null
-        objInHome[0]=null;
-        objInHome[1]=null;
-        objInHome[2]=null;
-        objInHome[3]=null;
+//        objInHome[0]=null;
+//        objInHome[1]=null;
+//        objInHome[2]=null;
+//        objInHome[3]=null;
     }
 
     
@@ -66,14 +68,20 @@ public class objPlayer {
     
     //Return number of player pieces in HOME
     public int getHomeCount(){
-        int count=0;
-        for(int i=0;i>objInHome.length;i++){
-            if(objInHome[i].equals(pColour)){
-                count++;
-            }
-        }
-        return count;
+        
+        return inHome;
     }
+    public void gotHome(){
+        this.inHome++;
+    }
+//        int count=0;
+//        for(int i=0;i>objInHome.length;i++){
+//            if(objInHome[i].equals(pColour)){
+//                count++;
+//            }
+//        }
+//        return count;
+//    }
     public int getNumInStart(){
         int count=0;
         for(int i=0;i>objInStart.length;i++){
