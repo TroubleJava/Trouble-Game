@@ -19,7 +19,12 @@ public class Trouble implements Serializable {
     private objPlayer player3;
     private objPlayer player4;
     private String strCurrentPlayer;
-    private objPlayer[] board;
+    private objPlayer[] board;   
+    Trouble tr = new Trouble();
+    private objPlayer objBoard[] = tr.getBoard();
+    objPlayer op = new objPlayer();
+    public int currentRoll;
+    private boolean moveFromStart = false;
 
     /**
      *
@@ -140,14 +145,6 @@ public class Trouble implements Serializable {
     
     
     
-    Trouble tr = new Trouble();
-    private objPlayer objBoard[] = tr.getBoard();
-    objPlayer op = new objPlayer();
-    public int currentRoll;
-    private boolean moveFromStart = false;
-
-    public void objTHEGame() {}
-    
     
 
     //starts a new game with players that are available
@@ -161,7 +158,7 @@ public class Trouble implements Serializable {
     //Find position by searching array
     public int piecePosition(Object[] piece) {
         int position = 0; //Initialize varibale
-        char player = (char) piece[0]; //MAYBE
+        char player = op.getColour(); //MAYBE
         for (int j = 0; j < 3; j++) { //Loop through home and start
             if (op.objInStart[j] == piece) {
                 position = op.getHomeIndex(player);
@@ -224,8 +221,7 @@ public class Trouble implements Serializable {
     //Player movement
     //Takes player's piece and their roll
     //Handles landing on another piece or not
-    public void move(int pos, int n, char currentPlayer, Object[] piece) {
-        
+    public void move(int pos, int n, char currentPlayer, Object[] piece) {        
         //Check if landing on another piece
         if (objBoard[pos + n] != null) {
             //Check if the landed on piece is a different players
@@ -243,18 +239,11 @@ public class Trouble implements Serializable {
             //Check to see if it can enter home
             if(op.getHomeCount() != 4){
                 objBoard[pos] = null; //Destroy old piece before move 
-                op.setObjAtHome(piece);
-                
-                
-                
-            }
-            
-            
-            
-            
-        } 
-        else {            
-                       
+                op.gotHome(); //It got home
+            }           
+        }
+        //Missed home
+        else {                      
             objBoard[pos + n] = op; //Move
         }
     }
@@ -274,34 +263,5 @@ public class Trouble implements Serializable {
         }
 
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 }
