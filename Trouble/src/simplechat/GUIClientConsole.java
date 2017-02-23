@@ -21,6 +21,35 @@ public class GUIClientConsole extends JFrame implements ChatIF {
     private JButton sendB = new JButton("Send Message");
     private JButton quitB = new JButton("Quit Application");
     private JButton pop_O_Matic_Bubble = new JButton("P O P");
+    
+    private JButton board1 = new JButton("-");
+    private JButton board2 = new JButton("-");
+    private JButton board3 = new JButton("-");
+    private JButton board4 = new JButton("-");
+    private JButton board5 = new JButton("-");
+    private JButton board6 = new JButton("-");
+    private JButton board7 = new JButton("-");
+    private JButton board8 = new JButton("-");
+    private JButton board9 = new JButton("-");
+    private JButton board10 = new JButton("-");
+    private JButton board11 = new JButton("-");
+    private JButton board12 = new JButton("-");
+    private JButton board13 = new JButton("-");
+    private JButton board14 = new JButton("-");
+    private JButton board15 = new JButton("-");
+    private JButton board16 = new JButton("-");
+    private JButton board17 = new JButton("-");
+    private JButton board18 = new JButton("-");
+    private JButton board19 = new JButton("-");
+    private JButton board20 = new JButton("-");
+    private JButton board21 = new JButton("-");
+    private JButton board22 = new JButton("-");
+    private JButton board23 = new JButton("-");
+    private JButton board24 = new JButton("-");
+    private JButton board25 = new JButton("-");
+    private JButton board26 = new JButton("-");
+    private JButton board27 = new JButton("-");
+    private JButton board28 = new JButton("-");
 	
     private JTextField portTxF = new JTextField("5555");
     private JTextField hostTxF = new JTextField("127.0.0.1");
@@ -44,108 +73,79 @@ public class GUIClientConsole extends JFrame implements ChatIF {
     private JLabel blank11LB = new JLabel("", JLabel.RIGHT);
     private JLabel blank12LB = new JLabel("", JLabel.RIGHT);
     
-    private JLabel startRed1 = new JLabel("R");
-    private JLabel startRed2 = new JLabel("R");
-    private JLabel startRed3 = new JLabel("R");
-    private JLabel startRed4 = new JLabel("R");
-    private JLabel homeRed1 = new JLabel("H");
-    private JLabel homeRed2 = new JLabel("H");
-    private JLabel homeRed3 = new JLabel("H");
-    private JLabel homeRed4 = new JLabel("H");
+    private JButton startRed1 = new JButton("R");
+    private JButton startRed2 = new JButton("R");
+    private JButton startRed3 = new JButton("R");
+    private JButton startRed4 = new JButton("R");
+    private JButton homeRed1 = new JButton("H");
+    private JButton homeRed2 = new JButton("O");
+    private JButton homeRed3 = new JButton("M");
+    private JButton homeRed4 = new JButton("E");
     
-    private JLabel startYellow1 = new JLabel("Y");
-    private JLabel startYellow2 = new JLabel("Y");
-    private JLabel startYellow3 = new JLabel("Y");
-    private JLabel startYellow4 = new JLabel("Y");
-    private JLabel homeYellow1 = new JLabel("H");
-    private JLabel homeYellow2 = new JLabel("H");
-    private JLabel homeYellow3 = new JLabel("H");
-    private JLabel homeYellow4 = new JLabel("H");
+    private JButton startYellow1 = new JButton("Y");
+    private JButton startYellow2 = new JButton("Y");
+    private JButton startYellow3 = new JButton("Y");
+    private JButton startYellow4 = new JButton("Y");
+    private JButton homeYellow1 = new JButton("E");
+    private JButton homeYellow2 = new JButton("M");
+    private JButton homeYellow3 = new JButton("O");
+    private JButton homeYellow4 = new JButton("H");
     
-    private JLabel startBlue1 = new JLabel("B");
-    private JLabel startBlue2 = new JLabel("B");
-    private JLabel startBlue3 = new JLabel("B");
-    private JLabel startBlue4 = new JLabel("B");
-    private JLabel homeBlue1 = new JLabel("H");
-    private JLabel homeBlue2 = new JLabel("H");
-    private JLabel homeBlue3 = new JLabel("H");
-    private JLabel homeBlue4 = new JLabel("H");
+    private JButton startBlue1 = new JButton("B");
+    private JButton startBlue2 = new JButton("B");
+    private JButton startBlue3 = new JButton("B");
+    private JButton startBlue4 = new JButton("B");
+    private JButton homeBlue1 = new JButton("E");
+    private JButton homeBlue2 = new JButton("M");
+    private JButton homeBlue3 = new JButton("O");
+    private JButton homeBlue4 = new JButton("H");
     
-    private JLabel startGreen1 = new JLabel("G");
-    private JLabel startGreen2 = new JLabel("G");
-    private JLabel startGreen3 = new JLabel("G");
-    private JLabel startGreen4 = new JLabel("G");
-    private JLabel homeGreen1 = new JLabel("H");
-    private JLabel homeGreen2 = new JLabel("H");
-    private JLabel homeGreen3 = new JLabel("H");
-    private JLabel homeGreen4 = new JLabel("H");
+    private JButton startGreen1 = new JButton("G");
+    private JButton startGreen2 = new JButton("G");
+    private JButton startGreen3 = new JButton("G");
+    private JButton startGreen4 = new JButton("G");
+    private JButton homeGreen1 = new JButton("H");
+    private JButton homeGreen2 = new JButton("O");
+    private JButton homeGreen3 = new JButton("M");
+    private JButton homeGreen4 = new JButton("E");
     
-    private JLabel outsideBoard1 = new JLabel("ob");
-    private JLabel outsideBoard2 = new JLabel("ob");
-    private JLabel outsideBoard3 = new JLabel("ob");
-    private JLabel outsideBoard4 = new JLabel("ob");
-    private JLabel outsideBoard5 = new JLabel("ob");
-    private JLabel outsideBoard6 = new JLabel("ob");
-    private JLabel outsideBoard7 = new JLabel("ob");
-    private JLabel outsideBoard8 = new JLabel("ob");
-    private JLabel outsideBoard9 = new JLabel("ob");
-    private JLabel outsideBoard10 = new JLabel("ob");
-    private JLabel outsideBoard11 = new JLabel("ob");
-    private JLabel outsideBoard12 = new JLabel("ob");
-    private JLabel outsideBoard13 = new JLabel("ob");
-    private JLabel outsideBoard14 = new JLabel("ob");
-    private JLabel outsideBoard15 = new JLabel("ob");
-    private JLabel outsideBoard16 = new JLabel("ob");
-    private JLabel outsideBoard17 = new JLabel("ob");
-    private JLabel outsideBoard18 = new JLabel("ob");
-    private JLabel outsideBoard19 = new JLabel("ob");
-    private JLabel outsideBoard20 = new JLabel("ob");
+    private JLabel outsideBoard1 = new JLabel("");
+    private JLabel outsideBoard2 = new JLabel("");
+    private JLabel outsideBoard3 = new JLabel("");
+    private JLabel outsideBoard4 = new JLabel("");
+    private JLabel outsideBoard5 = new JLabel("");
+    private JLabel outsideBoard6 = new JLabel("");
+    private JLabel outsideBoard7 = new JLabel("");
+    private JLabel outsideBoard8 = new JLabel("");
+    private JLabel outsideBoard9 = new JLabel("");
+    private JLabel outsideBoard10 = new JLabel("");
+    private JLabel outsideBoard11 = new JLabel("");
+    private JLabel outsideBoard12 = new JLabel("");
+    private JLabel outsideBoard13 = new JLabel("");
+    private JLabel outsideBoard14 = new JLabel("");
+    private JLabel outsideBoard15 = new JLabel("");
+    private JLabel outsideBoard16 = new JLabel("");
+    private JLabel outsideBoard17 = new JLabel("");
+    private JLabel outsideBoard18 = new JLabel("");
+    private JLabel outsideBoard19 = new JLabel("");
+    private JLabel outsideBoard20 = new JLabel("");
     
-    private JLabel insideBoard1 = new JLabel("ib");
-    private JLabel insideBoard2 = new JLabel("ib");
-    private JLabel insideBoard3 = new JLabel("ib");
-    private JLabel insideBoard4 = new JLabel("ib");
-    private JLabel insideBoard5 = new JLabel("ib");
-    private JLabel insideBoard6 = new JLabel("ib");
-    private JLabel insideBoard7 = new JLabel("ib");
-    private JLabel insideBoard8 = new JLabel("ib");
-    private JLabel insideBoard9 = new JLabel("ib");
-    private JLabel insideBoard10 = new JLabel("ib");
-    private JLabel insideBoard11 = new JLabel("ib");
-    private JLabel insideBoard12 = new JLabel("ib");
-    private JLabel insideBoard13 = new JLabel("ib");
-    private JLabel insideBoard14 = new JLabel("ib");
-    private JLabel insideBoard15 = new JLabel("ib");
-    private JLabel insideBoard16 = new JLabel("ib");
-    
-    private JLabel board1 = new JLabel("-");
-    private JLabel board2 = new JLabel("-");
-    private JLabel board3 = new JLabel("-");
-    private JLabel board4 = new JLabel("-");
-    private JLabel board5 = new JLabel("-");
-    private JLabel board6 = new JLabel("-");
-    private JLabel board7 = new JLabel("-");
-    private JLabel board8 = new JLabel("-");
-    private JLabel board9 = new JLabel("-");
-    private JLabel board10 = new JLabel("-");
-    private JLabel board11 = new JLabel("-");
-    private JLabel board12 = new JLabel("-");
-    private JLabel board13 = new JLabel("-");
-    private JLabel board14 = new JLabel("-");
-    private JLabel board15 = new JLabel("-");
-    private JLabel board16 = new JLabel("-");
-    private JLabel board17 = new JLabel("-");
-    private JLabel board18 = new JLabel("-");
-    private JLabel board19 = new JLabel("-");
-    private JLabel board20 = new JLabel("-");
-    private JLabel board21 = new JLabel("-");
-    private JLabel board22 = new JLabel("-");
-    private JLabel board23 = new JLabel("-");
-    private JLabel board24 = new JLabel("-");
-    private JLabel board25 = new JLabel("-");
-    private JLabel board26 = new JLabel("-");
-    private JLabel board27 = new JLabel("-");
-    private JLabel board28 = new JLabel("-");
+    private JLabel insideBoard1 = new JLabel("");
+    private JLabel insideBoard2 = new JLabel("");
+    private JLabel insideBoard3 = new JLabel("");
+    private JLabel insideBoard4 = new JLabel("");
+    private JLabel insideBoard5 = new JLabel("");
+    private JLabel insideBoard6 = new JLabel("");
+    private JLabel insideBoard7 = new JLabel("");
+    private JLabel insideBoard8 = new JLabel("");
+    private JLabel insideBoard9 = new JLabel("");
+    private JLabel insideBoard10 = new JLabel("");
+    private JLabel insideBoard11 = new JLabel("");
+    private JLabel insideBoard12 = new JLabel("");
+    private JLabel insideBoard13 = new JLabel("");
+    private JLabel insideBoard14 = new JLabel("");
+    private JLabel insideBoard15 = new JLabel("");
+    private JLabel insideBoard16 = new JLabel("");
     
     private JTextArea messageList = new JTextArea(10,15);
     
@@ -167,44 +167,75 @@ public class GUIClientConsole extends JFrame implements ChatIF {
         //playArea.setLayout(new GridLayout(10,10,5,5));
         playArea.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-        c.ipadx = 35;
-        c.ipady = 35;
+        c.fill = GridBagConstraints.BOTH;
+        c.ipadx = 25;
+        c.ipady = 25;
         
-        startYellow1.setForeground(Color.yellow);
-        startYellow2.setForeground(Color.yellow);
-        startYellow3.setForeground(Color.yellow);
-        startYellow4.setForeground(Color.yellow);
-        homeYellow1.setForeground(Color.yellow);
-        homeYellow2.setForeground(Color.yellow);
-        homeYellow3.setForeground(Color.yellow);
-        homeYellow4.setForeground(Color.yellow);
+        startYellow1.setBackground(Color.yellow);
+        startYellow2.setBackground(Color.yellow);
+        startYellow3.setBackground(Color.yellow);
+        startYellow4.setBackground(Color.yellow);
+        homeYellow1.setBackground(Color.white);
+        homeYellow2.setBackground(Color.white);
+        homeYellow3.setBackground(Color.white);
+        homeYellow4.setBackground(Color.white);
         
-        startRed1.setForeground(Color.red);
-        startRed2.setForeground(Color.red);
-        startRed3.setForeground(Color.red);
-        startRed4.setForeground(Color.red);
-        homeRed1.setForeground(Color.red);
-        homeRed2.setForeground(Color.red);
-        homeRed3.setForeground(Color.red);
-        homeRed4.setForeground(Color.red);
+        startRed1.setBackground(Color.red);
+        startRed2.setBackground(Color.red);
+        startRed3.setBackground(Color.red);
+        startRed4.setBackground(Color.red);
+        homeRed1.setBackground(Color.white);
+        homeRed2.setBackground(Color.white);
+        homeRed3.setBackground(Color.white);
+        homeRed4.setBackground(Color.white);
         
-        startBlue1.setForeground(Color.blue);
-        startBlue2.setForeground(Color.blue);
-        startBlue3.setForeground(Color.blue);
-        startBlue4.setForeground(Color.blue);
-        homeBlue1.setForeground(Color.blue);
-        homeBlue2.setForeground(Color.blue);
-        homeBlue3.setForeground(Color.blue);
-        homeBlue4.setForeground(Color.blue);
+        startBlue1.setBackground(Color.blue);
+        startBlue2.setBackground(Color.blue);
+        startBlue3.setBackground(Color.blue);
+        startBlue4.setBackground(Color.blue);
+        homeBlue1.setBackground(Color.white);
+        homeBlue2.setBackground(Color.white);
+        homeBlue3.setBackground(Color.white);
+        homeBlue4.setBackground(Color.white);
         
-        startGreen1.setForeground(Color.green);
-        startGreen2.setForeground(Color.green);
-        startGreen3.setForeground(Color.green);
-        startGreen4.setForeground(Color.green);
-        homeGreen1.setForeground(Color.green);
-        homeGreen2.setForeground(Color.green);
-        homeGreen3.setForeground(Color.green);
-        homeGreen4.setForeground(Color.green);
+        startGreen1.setBackground(Color.green);
+        startGreen2.setBackground(Color.green);
+        startGreen3.setBackground(Color.green);
+        startGreen4.setBackground(Color.green);
+        homeGreen1.setBackground(Color.white);
+        homeGreen2.setBackground(Color.white);
+        homeGreen3.setBackground(Color.white);
+        homeGreen4.setBackground(Color.white);
+        
+        board1.setBackground(Color.gray);
+        board2.setBackground(Color.gray);
+        board3.setBackground(Color.gray);
+        board4.setBackground(Color.gray);
+        board5.setBackground(Color.gray);
+        board6.setBackground(Color.gray);
+        board7.setBackground(Color.gray);
+        board8.setBackground(Color.gray);
+        board9.setBackground(Color.gray);
+        board10.setBackground(Color.gray);
+        board11.setBackground(Color.gray);
+        board12.setBackground(Color.gray);
+        board13.setBackground(Color.gray);
+        board14.setBackground(Color.gray);
+        board15.setBackground(Color.gray);
+        board16.setBackground(Color.gray);
+        board17.setBackground(Color.gray);
+        board18.setBackground(Color.gray);
+        board19.setBackground(Color.gray);
+        board20.setBackground(Color.gray);
+        board21.setBackground(Color.gray);
+        board22.setBackground(Color.gray);
+        board23.setBackground(Color.gray);
+        board24.setBackground(Color.gray);
+        board25.setBackground(Color.gray);
+        board26.setBackground(Color.gray);
+        board27.setBackground(Color.gray);
+        board28.setBackground(Color.gray);
+        
         
         c.gridx = 0;
         c.gridy = 0;
@@ -232,20 +263,28 @@ public class GUIClientConsole extends JFrame implements ChatIF {
             playArea.add(startRed1,c);
             c.gridx = 1;
             playArea.add(board1,c);
+            board1.setEnabled(false);
             c.gridx = 2;
             playArea.add(board2,c);
+            board2.setEnabled(false);
             c.gridx = 3;
             playArea.add(board3,c);
+            board3.setEnabled(false);
             c.gridx = 4;
             playArea.add(board4,c);
+            board4.setEnabled(false);
             c.gridx = 5;
             playArea.add(board5,c);
+            board5.setEnabled(false);
             c.gridx = 6;
             playArea.add(board6,c);
+            board6.setEnabled(false);
             c.gridx = 7;
             playArea.add(board7,c);
+            board7.setEnabled(false);
             c.gridx = 8;
             playArea.add(board8,c);
+            board8.setEnabled(false);
             c.gridx = 9;
             playArea.add(outsideBoard7,c);
                 c.gridx = 0;
@@ -253,6 +292,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                 playArea.add(startRed2,c);
                 c.gridx = 1;
                 playArea.add(board28,c);
+                board28.setEnabled(false);
                 c.gridx = 2;
                 playArea.add(homeRed1,c);
                 c.gridx = 3;
@@ -267,6 +307,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                 playArea.add(homeYellow1,c);
                 c.gridx = 8;
                 playArea.add(board9,c);
+                board9.setEnabled(false);
                 c.gridx = 9;
                 playArea.add(outsideBoard8,c);
                     c.gridx = 0;
@@ -274,6 +315,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                     playArea.add(startRed3,c);
                     c.gridx = 1;
                     playArea.add(board27,c);
+                    board27.setEnabled(false);
                     c.gridx = 2;
                     playArea.add(homeRed2,c);
                     c.gridx = 3;
@@ -288,6 +330,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                     playArea.add(insideBoard6,c);
                     c.gridx = 8;
                     playArea.add(board10,c);
+                    board10.setEnabled(false);
                     c.gridx = 9;
                     playArea.add(outsideBoard9,c);
                         c.gridx = 0;
@@ -295,6 +338,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                         playArea.add(startRed4,c);
                         c.gridx = 1;
                         playArea.add(board26,c);
+                        board26.setEnabled(false);
                         c.gridx = 2;
                         playArea.add(homeRed3,c);
                         c.gridx = 3;
@@ -311,6 +355,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                         playArea.add(homeBlue4,c);
                         c.gridx = 8;
                         playArea.add(board11,c);
+                        board11.setEnabled(false);
                         c.gridx = 9;
                         playArea.add(outsideBoard10,c);
                             c.gridx = 0;
@@ -318,6 +363,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                             playArea.add(outsideBoard20,c);
                             c.gridx = 1;
                             playArea.add(board25,c);
+                            board25.setEnabled(false);
                             c.gridx = 2;
                             playArea.add(homeRed4,c);
                             c.gridx = 3;
@@ -328,6 +374,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                             playArea.add(homeBlue3,c);
                             c.gridx = 8;
                             playArea.add(board12,c);
+                            board12.setEnabled(false);
                             c.gridx = 9;
                             playArea.add(startBlue4,c);
                                 c.gridx = 0;
@@ -335,6 +382,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                                 playArea.add(outsideBoard19,c);
                                 c.gridx = 1;
                                 playArea.add(board24,c);
+                                board24.setEnabled(false);
                                 c.gridx = 2;
                                 playArea.add(insideBoard11,c);
                                 c.gridx = 3;
@@ -349,6 +397,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                                 playArea.add(homeBlue2,c);
                                 c.gridx = 8;
                                 playArea.add(board13,c);
+                                board13.setEnabled(false);
                                 c.gridx = 9;
                                 playArea.add(startBlue3,c);
                                     c.gridx = 0;
@@ -356,6 +405,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                                     playArea.add(outsideBoard18,c);
                                     c.gridx = 1;
                                     playArea.add(board23,c);
+                                    board23.setEnabled(false);
                                     c.gridx = 2;
                                     playArea.add(homeGreen1,c);
                                     c.gridx = 3;
@@ -370,6 +420,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                                     playArea.add(homeBlue1,c);
                                     c.gridx = 8;
                                     playArea.add(board14,c);
+                                    board14.setEnabled(false);
                                     c.gridx = 9;
                                     playArea.add(startBlue2,c);
                                         c.gridx = 0;
@@ -377,20 +428,28 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                                         playArea.add(outsideBoard17,c);
                                         c.gridx = 1;
                                         playArea.add(board22,c);
+                                        board22.setEnabled(false);
                                         c.gridx = 2;
                                         playArea.add(board21,c);
+                                        board21.setEnabled(false);
                                         c.gridx = 3;
                                         playArea.add(board20,c);
+                                        board20.setEnabled(false);
                                         c.gridx = 4;
                                         playArea.add(board19,c);
+                                        board19.setEnabled(false);
                                         c.gridx = 5;
                                         playArea.add(board18,c);
+                                        board18.setEnabled(false);
                                         c.gridx = 6;
                                         playArea.add(board17,c);
+                                        board17.setEnabled(false);
                                         c.gridx = 7;
                                         playArea.add(board16,c);
+                                        board16.setEnabled(false);
                                         c.gridx = 8;
                                         playArea.add(board15,c);
+                                        board15.setEnabled(false);
                                         c.gridx = 9;
                                         playArea.add(startBlue1,c);
                                             c.gridx = 0;
@@ -417,17 +476,19 @@ public class GUIClientConsole extends JFrame implements ChatIF {
         
 	bottom.setLayout(new GridLayout(8,3,5,5));
 	
+        bottom.add(blank1LB);
         bottom.add(userNameLB);
         bottom.add(userNameTxF);
-        bottom.add(blank1LB);
         
         bottom.add(openB);
         bottom.add(messageLB);
         bottom.add(messageTxF);
         
         bottom.add(closeB);
+        closeB.setEnabled(false);
         bottom.add(blank2LB);
         bottom.add(sendB);
+        sendB.setEnabled(false);
         
         bottom.add(hostLB);
 	bottom.add(portLB);
@@ -465,7 +526,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
         closeB.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
-		send("#logOff");
+		close();
 		//display(messageTxF.getText()+"\n" );
             }
         });
@@ -475,32 +536,50 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                 open();
             }
         });
+        quitB.addActionListener( new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                quit();
+            }
+        });
         //do setters
         this.host = host;
         this.port = port;
         this.userName = userName;
     }
-
     public void send(String message){
         client.handleMessageFromClientUI(message);
+        messageTxF.setText("");
     }
     public void display(String message ){
         //if(messageList.getLineCount() != null){
-            messageList.insert(message, messageList.getLineCount());
+            messageList.append(message+"\n");
         //}    
     }
-
     public void open(){
-        host = hostTxF.getText();
         userName = userNameTxF.getText();
-        port = Integer.parseInt(portTxF.getText());
-        try{
-            client = new ChatClient(host ,port, userName, this);
-        }
-        catch(IOException exception){
-            System.out.println("Error: Can't setup connection!" + " Terminating client.");
-            System.exit(1);
-        }
+            host = hostTxF.getText();
+            port = Integer.parseInt(portTxF.getText());
+            try{
+                client = new ChatClient(host ,port, userName, this);
+                closeB.setEnabled(true);
+                sendB.setEnabled(true);
+                openB.setEnabled(false);
+            }
+            catch(IOException exception){
+                System.out.println("Error: Can't setup connection!" + " Terminating client.");
+                System.exit(1);
+            }
+    }
+    public void close(){
+        openB.setEnabled(true);
+        closeB.setEnabled(false);
+        sendB.setEnabled(false);
+        userNameTxF.setText("");
+        send("#logOff");
+    }
+    public void quit(){
+        System.exit(0);
     }
     public static void main(String[] args) 
     {
