@@ -124,9 +124,9 @@ public class objPlayer {
         return index;
     }
     
-    public Object checkAtHome(int indexCheck){
-        return objInHome[indexCheck];
-    }
+//    public Object checkAtHome(int indexCheck){
+//        return objInHome[indexCheck];
+//    }
 
     //Returns player Username
     public String getStrUserName() {
@@ -149,13 +149,13 @@ public class objPlayer {
     }
 
     //Returns the Array of pieces in home
-    public Object[] getObjAtHome() {
-        return objInHome;
-    }
+//    public Object[] getObjAtHome() {
+//        return objInHome;
+//    }
 
     //sets initial pieces in home
-    public void setObjAtHome(Object[] charAtHome) {
-        this.objInHome = charAtHome;
-    }
+//    public void setObjAtHome(Object[] charAtHome) {
+//        this.objInHome = charAtHome;
+//    }
     
 }
