@@ -74,6 +74,15 @@ public class objPlayer {
         }
         return count;
     }
+    public int getNumInStart(){
+        int count=0;
+        for(int i=0;i>objInStart.length;i++){
+            if(objInStart[i].equals(pColour)){
+                count++;
+            }
+        }
+        return count;
+    }
 
 //    Set player colour
     public void setColour(char colour) {
