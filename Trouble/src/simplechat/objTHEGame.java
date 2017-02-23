@@ -19,13 +19,12 @@ public class objTHEGame {
     public int currentRoll;
     private boolean moveFromStart = false;
 
-    public void objTHEGame() {
-    }
+    public void objTHEGame() {}
+    
+    
 
     //starts a new game with players that are available
-    public void StartGame() {
-
-    }
+    public void StartGame() {}
 
     //returns the random die roll
     public int rollDie() {
@@ -35,7 +34,7 @@ public class objTHEGame {
     //Find position by searching array
     public int piecePosition(Object[] piece) {
         int position = 0; //Initialize varibale
-        char player = piece[0];
+        char player = (char) piece[0]; //MAYBE
         for (int j = 0; j < 3; j++) { //Loop through home and start
             if (op.objInStart[j] == piece) {
                 position = op.getHomeIndex(player);
@@ -62,7 +61,7 @@ public class objTHEGame {
     public void onTurnStart() {
         Object[] piece = new Object[4];
         char currentPlayer = op.getColour(); //Current Player
-        int position = piecePosition(currentPlayer, piece);
+        int position = piecePosition(piece);
         int roll = rollDie(); //Get roll
         currentRoll = roll; //Set the global variable for other classes
         //Does the player want to move a character from start?
