@@ -518,6 +518,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
         bottom.add(blank7LB);
         bottom.add(blank8LB);
         bottom.add(playTroubleB);
+        playTroubleB.setEnabled(false);
         
         bottom.add(hostTxF);
         bottom.add(blank10LB);
@@ -543,6 +544,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
             public void actionPerformed(ActionEvent e)
             {
                 send("#roll");
+                //pop_O_Matic_Bubble.setText();
             }
         });
         sendB.addActionListener( new ActionListener(){
@@ -594,6 +596,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                 closeB.setEnabled(true);
                 sendB.setEnabled(true);
                 openB.setEnabled(false);
+                playTroubleB.setEnabled(true);
             }
             catch(IOException exception){
                 System.out.println("Error: Can't setup connection!" + " Terminating client.");

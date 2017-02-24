@@ -30,9 +30,10 @@ public class Trouble implements Serializable {
     /**
      *
      */
-    public Trouble(){}
+    public Trouble(){System.out.println("made it in");}
     
     public Trouble(String p1, String p2){
+        
         numOfPlayers = 2;
         objPlayer player1 = new objPlayer('R',p1);
         objPlayer player2 = new objPlayer('B',p2);

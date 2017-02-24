@@ -45,22 +45,31 @@ public class EchoServer extends AbstractServer
         if(msg instanceof Envelope){
             Envelope e = (Envelope)msg;
             String r1 = e.getRecipient1();
+            System.out.println(r1);
             String r2 = e.getRecipient2();
+            System.out.println(r2);
             String r3 = e.getRecipient3();
+            System.out.println(r3);
+            System.out.println("Here?");
             Trouble tr = new Trouble();
-            if(r3 != ""){
+            System.out.println("Or There?");
+            if(r3 != null){
+                System.out.println("Thinks 4 players");
                 tr = new Trouble(client.getInfo("userName").toString(), r1, r2, r3);
                 sendToAClient("You are playing Trouble!", r3);
                 sendToAClient("You are playing Trouble!", r2);
                 sendToAClient("You are playing Trouble!", r1);
             }
-            else if(r2 != ""){
+            else if(r2 != null){
+                System.out.println("Thinks 3 players");
                 tr = new Trouble(client.getInfo("userName").toString(), r1, r2);
                 sendToAClient("You are playing Trouble!", r2);
                 sendToAClient("You are playing Trouble!", r1);
             }
             else{
+                System.out.println("Before creating Trouble");
                 tr = new Trouble(client.getInfo("userName").toString(), r1);
+                System.out.println("After creating Trouble");
                 sendToAClient("You are playing Trouble!", r1);
             }
             handleTrouble(tr);
@@ -79,8 +88,6 @@ public class EchoServer extends AbstractServer
     }
     
     public void handleTrouble(Trouble tr){
-        
-        String message = msg.toString();
         
         tr.switchActivePlayer();
         sendToAClient(tr,tr.getCurrentPlayer());

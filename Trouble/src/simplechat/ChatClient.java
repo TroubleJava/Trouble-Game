@@ -110,18 +110,22 @@ public class ChatClient extends AbstractClient
         }
         else if(message.startsWith("#sendTrouble")){
             try{
-                String recipient1 = message.split(" ")[1];
-                String recipient2 = message.split(" ")[2];
-                String recipient3 = message.split(" ")[3];
+                int players = message.split(" ").length;
                 Envelope e = new Envelope();
                 Object[] board = new Object[27];
-                if(recipient3 != ""){
+                if(players == 4){
+                    String recipient1 = message.split(" ")[1];
+                    String recipient2 = message.split(" ")[2];
+                    String recipient3 = message.split(" ")[3];
                     e = new Envelope(recipient1, recipient2, recipient3, board);
                 }
-                else if(recipient2 != ""){
+                else if(players == 3){
+                    String recipient1 = message.split(" ")[1];
+                    String recipient2 = message.split(" ")[2];
                     e = new Envelope(recipient1, recipient2, board);
                 }
                 else{
+                    String recipient1 = message.split(" ")[1];                
                     e = new Envelope(recipient1,board);
                 }
                 sendToServer(e);
@@ -131,7 +135,12 @@ public class ChatClient extends AbstractClient
             }
         }
         else if(message.startsWith("#roll")){
-            game.
+            try{
+                sendToServer(game.rollDie());
+            }
+            catch(IOException ioe){
+                ioe.printStackTrace();
+            }
         }
         else if(message.startsWith("#logOn")){
             try{
