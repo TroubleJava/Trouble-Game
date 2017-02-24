@@ -19,10 +19,11 @@ public class Trouble implements Serializable {
     private objPlayer player3;
     private objPlayer player4;
     private String strCurrentPlayer;
-    private objPlayer[] board;   
-    Trouble tr = new Trouble();
-    private objPlayer objBoard[] = tr.getBoard();
+    private objPiece[] board = new objPiece[27];   
+    
+    
     objPlayer op = new objPlayer();
+    
     public int currentRoll;
     private boolean moveFromStart = false;
 
@@ -35,6 +36,7 @@ public class Trouble implements Serializable {
         numOfPlayers = 2;
         objPlayer player1 = new objPlayer('R',p1);
         objPlayer player2 = new objPlayer('B',p2);
+        board = null;
     }
     
     public Trouble(String p1, String p2, String p3){
@@ -42,6 +44,7 @@ public class Trouble implements Serializable {
         objPlayer player1 = new objPlayer('R',p1);
         objPlayer player2 = new objPlayer('B',p2);
         objPlayer player3 = new objPlayer('Y',p3);
+        board = null;
     }
     
     public Trouble(String p1, String p2, String p3, String p4){
@@ -50,6 +53,7 @@ public class Trouble implements Serializable {
         objPlayer player2 = new objPlayer('B',p2);
         objPlayer player3 = new objPlayer('Y',p3);
         objPlayer player4 = new objPlayer('G',p4);
+        board = null;
     }
 
     public void switchActivePlayer(){
