@@ -3,7 +3,9 @@ package simplechat;
  *
  * @author DAT_BOY_FRY
  */
-public class objPlayer {
+import java.io.Serializable;
+
+public class objPlayer implements Serializable{
     
     public objPiece[] piece = new objPiece[3];//Pieces
 

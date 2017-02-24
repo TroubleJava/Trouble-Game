@@ -14,12 +14,12 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Trouble implements Serializable {
 
     public int numOfPlayers;
-    private objPlayer player1;
-    private objPlayer player2;
-    private objPlayer player3;
-    private objPlayer player4;
-    private objPlayer objCurrentPlayer;
-    private objPiece[] board = new objPiece[27];   
+    public objPlayer player1;
+    public objPlayer player2;
+    public objPlayer player3;
+    public objPlayer player4;
+    public objPlayer objCurrentPlayer;
+    public objPiece[] board = new objPiece[27];   
        
     
     public int currentRoll;
@@ -28,36 +28,45 @@ public class Trouble implements Serializable {
     /**
      *
      */
-    public Trouble(){System.out.println("made it in");}
+    public Trouble(){
+        board = null;
+    }
+    
     
     public Trouble(String p1, String p2){
         
         numOfPlayers = 2;
-        objPlayer player1 = new objPlayer('R',p1);
-        objPlayer player2 = new objPlayer('B',p2);
+        player1 = new objPlayer('R',p1);
+        player2 = new objPlayer('B',p2);
+        setCurrentPlayer(player1);
         board = null;
     }
     
     public Trouble(String p1, String p2, String p3){
         numOfPlayers = 3;
-        objPlayer player1 = new objPlayer('R',p1);
-        objPlayer player2 = new objPlayer('B',p2);
-        objPlayer player3 = new objPlayer('Y',p3);
+        player1 = new objPlayer('R',p1);
+        player2 = new objPlayer('B',p2);
+        player3 = new objPlayer('Y',p3);
+        setCurrentPlayer(player1);
         board = null;
     }
     
     public Trouble(String p1, String p2, String p3, String p4){
         numOfPlayers = 4;
-        objPlayer player1 = new objPlayer('R',p1);
-        objPlayer player2 = new objPlayer('B',p2);
-        objPlayer player3 = new objPlayer('Y',p3);
-        objPlayer player4 = new objPlayer('G',p4);
+        player1 = new objPlayer('R',p1);
+        player2 = new objPlayer('B',p2);
+        player3 = new objPlayer('Y',p3);
+        player4 = new objPlayer('G',p4);
+        setCurrentPlayer(player1);
         board = null;
     }
 
     public void switchActivePlayer(){
         switch(numOfPlayers){
             case 2:
+                System.out.println("Name is: " + getCurrentPlayer().getStrUserName());
+                System.out.println("Player 1 is: " + player1.getStrUserName());
+                System.out.println("Player 2 is: " + player2.getStrUserName());
                 if(objCurrentPlayer.equals(player1)){
                     setCurrentPlayer(player2);
                     break;
@@ -125,73 +134,51 @@ public class Trouble implements Serializable {
     public void setBoard(objPiece[] board) {
         this.board = board;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     //starts a new game with players that are available
     public void StartGame() {}
 
     //returns the random die roll
-    public int rollDie() {
-        return ThreadLocalRandom.current().nextInt(1, 6);
+    public void rollDie() {
+        currentRoll = ThreadLocalRandom.current().nextInt(1, 7);
     }     
     
     
     //When a player's turn is started, this should be the first method that runs
-    public void onTurnStart() {
-         currentRoll = rollDie(); //Set the global variable for other classea
+    public void onTurnStart(objPiece pp) {
+         //currentRoll = rollDie(); //Set the global variable for other classea
         
+        System.out.println("My position: " + pp.getPosition());
+        System.out.println("My index: " + pp.getIndex());
+        System.out.println("My color: " + pp.getColour());
+    
         
+        //Object[] piece = op.objPiece;
         
-        
-        Object[] piece = op.objPiece;
-        
-        int position = piecePosition(piece); //Position of the selected piece
-        
+        //int position = piecePosition(piece); //Position of the selected piece
+    
         //Does the player want to move a character from start?
             //If yes, check if there is something in the start
         if (moveFromStart == true && checkStart() == true) {
-            if (roll == 6) { //Exit the start zone                                
-                objBoard[position] = op; //Sets the piece position to the start position 
+            //if (roll == 6) { //Exit the start zone                                
+              //  objBoard[position] = op; //Sets the piece position to the start position 
             } else { //Don't move                
                 checkWin(); //Calling checkWin because this will always end the turn                
             }
         } 
         //If you roll a six and choose not to move out of home
-        else if (roll == 6) {            
-            move(position, roll, currentPlayer, piece); //Move
+//        else if //(roll == 6) {            
+            //move(position, roll, currentPlayer, piece); //Move
             //New turn      
             
-            checkWin(); //Calling checkWin because this will always end the turn
-        } 
-        //They don't want to move a piece from start
-        else {            
-            move(position, roll, currentPlayer, piece); //Move selected piece
-            checkWin(); //Calling checkWin because this will always end the turn
-        }
-    }
+//            checkWin(); //Calling checkWin because this will always end the turn
+//        } 
+//        //They don't want to move a piece from start
+//        else {            
+//            //move(position, roll, currentPlayer, piece); //Move selected piece
+//            checkWin(); //Calling checkWin because this will always end the turn
+//        }
+//    }
     //Check start to see if there are still pieces in it
     public boolean checkStart() {
         boolean isSomeoneInStart = false;        

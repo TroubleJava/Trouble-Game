@@ -134,14 +134,6 @@ public class ChatClient extends AbstractClient
                 e.printStackTrace();
             }
         }
-        else if(message.startsWith("#roll")){
-            try{
-                sendToServer(game.rollDie());
-            }
-            catch(IOException ioe){
-                ioe.printStackTrace();
-            }
-        }
         else if(message.startsWith("#logOn")){
             try{
                 openConnection();

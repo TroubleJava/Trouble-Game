@@ -16,6 +16,8 @@ import static simplechat.ClientConsole.DEFAULT_PORT;
  */
 public class GUIClientConsole extends JFrame implements ChatIF {
     
+    public Trouble tr = new Trouble();
+    
     private JButton closeB = new JButton("Logout");
     private JButton openB = new JButton("Login");
     private JButton sendB = new JButton("Send Message");
@@ -538,13 +540,21 @@ public class GUIClientConsole extends JFrame implements ChatIF {
             public void actionPerformed(ActionEvent e)
             {
                 send("#sendTrouble " + messageTxF.getText());
+                startYellow1.putClientProperty(0, tr.objCurrentPlayer.piece[0]);
             }
         });
         pop_O_Matic_Bubble.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
-                send("#roll");
-                //pop_O_Matic_Bubble.setText();
+                tr.rollDie();
+                pop_O_Matic_Bubble.setText(String.valueOf(tr.currentRoll));
+            }
+        });
+        startYellow1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                
+                tr.onTurnStart((objPiece) startYellow1.getClientProperty(0));
+                
             }
         });
         sendB.addActionListener( new ActionListener(){

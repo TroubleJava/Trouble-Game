@@ -50,9 +50,7 @@ public class EchoServer extends AbstractServer
             System.out.println(r2);
             String r3 = e.getRecipient3();
             System.out.println(r3);
-            System.out.println("Here?");
             Trouble tr = new Trouble();
-            System.out.println("Or There?");
             if(r3 != null){
                 System.out.println("Thinks 4 players");
                 tr = new Trouble(client.getInfo("userName").toString(), r1, r2, r3);
@@ -67,11 +65,10 @@ public class EchoServer extends AbstractServer
                 sendToAClient("You are playing Trouble!", r1);
             }
             else{
-                System.out.println("Before creating Trouble");
                 tr = new Trouble(client.getInfo("userName").toString(), r1);
-                System.out.println("After creating Trouble");
                 sendToAClient("You are playing Trouble!", r1);
             }
+            System.out.println("send to handle");
             handleTrouble(tr);
         }
         else if(msg instanceof Trouble){
@@ -90,7 +87,7 @@ public class EchoServer extends AbstractServer
     public void handleTrouble(Trouble tr){
         
         tr.switchActivePlayer();
-        sendToAClient(tr,tr.getCurrentPlayer());
+        sendToAClient(tr,tr.getCurrentPlayer().getStrUserName());
     }
     
     public void handleServerCommand(Object msg, ConnectionToClient client){

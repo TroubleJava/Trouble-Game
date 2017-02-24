@@ -5,11 +5,13 @@
  */
 package simplechat;
 
+import java.io.Serializable;
+
 /**
  *
  * @author fryklund4766
  */
-public class objPiece {
+public class objPiece implements Serializable{
 
     private int index;
     private char colour;
