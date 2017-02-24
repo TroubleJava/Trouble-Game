@@ -18,11 +18,9 @@ public class Trouble implements Serializable {
     private objPlayer player2;
     private objPlayer player3;
     private objPlayer player4;
-    private String strCurrentPlayer;
+    private objPlayer objCurrentPlayer;
     private objPiece[] board = new objPiece[27];   
-    
-    
-    objPlayer op = new objPlayer();
+       
     
     public int currentRoll;
     private boolean moveFromStart = false;
@@ -60,42 +58,42 @@ public class Trouble implements Serializable {
     public void switchActivePlayer(){
         switch(numOfPlayers){
             case 2:
-                if(strCurrentPlayer.equals(player1.getStrUserName())){
-                    setCurrentPlayer(player2.getStrUserName());
+                if(objCurrentPlayer.equals(player1)){
+                    setCurrentPlayer(player2);
                     break;
                 }
                 else{
-                    setCurrentPlayer(player1.getStrUserName());
+                    setCurrentPlayer(player1);
                     break;
                 }
             case 3:
-                if(strCurrentPlayer.equals(player1.getStrUserName())){
-                    setCurrentPlayer(player2.getStrUserName());
+                if(objCurrentPlayer.equals(player1)){
+                    setCurrentPlayer(player2);
                     break;
                 }
-                else if(strCurrentPlayer.equals(player2.getStrUserName())){
-                    setCurrentPlayer(player3.getStrUserName());
+                else if(objCurrentPlayer.equals(player2)){
+                    setCurrentPlayer(player3);
                     break;
                 }
                 else{
-                    setCurrentPlayer(player1.getStrUserName());
+                    setCurrentPlayer(player1);
                     break;
                 }
             case 4:
-                if(strCurrentPlayer.equals(player1.getStrUserName())){
-                    setCurrentPlayer(player2.getStrUserName());
+                if(objCurrentPlayer.equals(player1)){
+                    setCurrentPlayer(player2);
                     break;
                 }
-                else if(strCurrentPlayer.equals(player2.getStrUserName())){
-                    setCurrentPlayer(player3.getStrUserName());
+                else if(objCurrentPlayer.equals(player2)){
+                    setCurrentPlayer(player3);
                     break;
                 }
-                else if(strCurrentPlayer.equals(player3.getStrUserName())){
-                    setCurrentPlayer(player4.getStrUserName());
+                else if(objCurrentPlayer.equals(player3)){
+                    setCurrentPlayer(player4);
                     break;
                 }
                 else{
-                    setCurrentPlayer(player1.getStrUserName());
+                    setCurrentPlayer(player1);
                     break;
                 }
         }
@@ -103,28 +101,28 @@ public class Trouble implements Serializable {
     /**
      * @return the intCurrentPlayer
      */
-    public String getCurrentPlayer() {
-        return strCurrentPlayer;
+    public objPlayer getCurrentPlayer() {
+        return objCurrentPlayer;
     }
 
     /**
      * @param intCurrentPlayer the intCurrentPlayer to set
      */
-    public void setCurrentPlayer(String strCurrentPlayer) {
-        this.strCurrentPlayer = strCurrentPlayer;
+    public void setCurrentPlayer(objPlayer objCurrentPlayer) {
+        this.objCurrentPlayer = objCurrentPlayer;
     }
 
     /**
      * @return the objTHEGame
      */
-    public objPlayer[] getBoard() {
+    public objPiece[] getBoard() {
         return board;
     }
 
     /**
      * @param objTHEGame the objTHEGame to set
      */
-    public void setBoard(objPlayer[] board) {
+    public void setBoard(objPiece[] board) {
         this.board = board;
     }
     
@@ -158,41 +156,20 @@ public class Trouble implements Serializable {
     //returns the random die roll
     public int rollDie() {
         return ThreadLocalRandom.current().nextInt(1, 6);
-    }
-
-    //Find position by searching array
-    public int piecePosition(Object[] piece) {
-        int position = 0; //Initialize varibale
-        char player = op.getColour(); //MAYBE
-        for (int j = 0; j < 3; j++) { //Loop through home and start
-            if (op.objInStart[j] == piece) {
-                position = op.getHomeIndex(player);
-            } else if (op.objInHome[j] == piece) {
-                position = op.getHomeIndex(player);
-            } else if (op.objInStart[j] != piece) {
-                for (int i = 0; i <= objBoard.length; i++) { //Loop through array of board
-                    if (objBoard[i] == op) {
-                        position = i;
-                    }
-                }
-            } else if (op.objInHome[j] != piece) {
-                for (int i = 0; i <= objBoard.length; i++) { //Loop through array of board
-                    if (objBoard[i] == op) {
-                        position = i;
-                    }
-                }
-            }
-        }
-        return position; //Returns position of piece
-    }
-
+    }     
+    
+    
     //When a player's turn is started, this should be the first method that runs
     public void onTurnStart() {
+         currentRoll = rollDie(); //Set the global variable for other classea
+        
+        
+        
+        
         Object[] piece = op.objPiece;
-        char currentPlayer = op.getColour(); //Current Player
+        
         int position = piecePosition(piece); //Position of the selected piece
-        int roll = rollDie(); //Get roll
-        currentRoll = roll; //Set the global variable for other classes
+        
         //Does the player want to move a character from start?
             //If yes, check if there is something in the start
         if (moveFromStart == true && checkStart() == true) {
@@ -217,9 +194,11 @@ public class Trouble implements Serializable {
     }
     //Check start to see if there are still pieces in it
     public boolean checkStart() {
-        boolean isSomeoneInStart = false;
-        if (op.getNumInStart() != 0) {
-            isSomeoneInStart = true;
+        boolean isSomeoneInStart = false;        
+        for(int i = 0; i < 3; i++){
+            if (objCurrentPlayer.piece[i].getPosition() == -1) {
+                isSomeoneInStart = true;
+            }        
         }
         return isSomeoneInStart;
     }
