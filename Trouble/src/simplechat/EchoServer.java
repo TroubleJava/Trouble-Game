@@ -190,7 +190,7 @@ public class EchoServer extends AbstractServer
     public void sendToAllClientsInRoom(Object msg, ConnectionToClient client)
     {
         String room = client.getInfo("room").toString();
-        String message = msg.toString();
+        //String message = msg.toString();
           
         //Send to all clients in the same room as sender
         Thread[] clientThreadList = getClientConnections();
@@ -202,7 +202,7 @@ public class EchoServer extends AbstractServer
             {
                 try
                 {
-                    clientProxy.sendToClient(message);
+                    clientProxy.sendToClient(msg);
                 }
                 catch (Exception ex) {
                     System.out.println("Failed to send message ");

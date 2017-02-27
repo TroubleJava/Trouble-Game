@@ -890,21 +890,25 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                         buttonCol = Color.red;
                         startGrid = 28;
                         homeGrid = 44;
+                        break;
                     case 'B':
                         buttonCol = Color.blue;
                         startGrid = 32;
                         homeGrid = 48;
+                        break;
                     case 'Y':
                         buttonCol = Color.yellow;
                         startGrid = 36;
                         homeGrid = 52;
+                        break;
                     case 'G':
                         buttonCol = Color.green;
                         startGrid = 40;
                         homeGrid = 56;
+                        break;
                 }
             for(int j=0;j<=3;j++){
-                piecePosition = tr.players[1].piece[j].getPosition();
+                piecePosition = tr.players[i].piece[j].getPosition();
                 if(piecePosition == -1){
                     theFullMetalBoard[startGrid].setBackground(buttonCol);
                     theFullMetalBoard[startGrid].setText(String.valueOf(col));
@@ -939,23 +943,32 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                 switch (i){
                     case 28: case 32: case 36: case 40:
                         theFullMetalBoard[i].setText("ST");
+                        break;
                     case 29: case 33: case 37: case 41:
                         theFullMetalBoard[i].setText("A");
+                        break;
                     case 30: case 34: case 38: case 42:
                         theFullMetalBoard[i].setText("R");
+                        break;
                     case 31: case 35: case 39: case 43:
                         theFullMetalBoard[i].setText("T");
+                        break;
                     case 44: case 48: case 52: case 56:
                         theFullMetalBoard[i].setText("H");
+                        break;
                     case 45: case 49: case 53: case 57:
                         theFullMetalBoard[i].setText("O");
+                        break;
                     case 46: case 50: case 54: case 58:
                         theFullMetalBoard[i].setText("M");
+                        break;
                     case 47: case 51: case 55: case 59:
                         theFullMetalBoard[i].setText("E");
+                        break;
                 }
             }
             theFullMetalBoard[i].setEnabled(false);
+            System.out.println("Fry is a loser");
         }
     }
     public static void main(String[] args) 
