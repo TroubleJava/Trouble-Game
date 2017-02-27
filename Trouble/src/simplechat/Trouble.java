@@ -191,11 +191,25 @@ public class Trouble implements Serializable {
         if (homeCount == 4) {
             //YOU WIN!!!
             playerWin = true;
-        } //Continue with game
-        else if (currentRoll == 6) { //Do another turn
+            
+            
+            
+            
+        } 
+        //Continue with game
+        //Player gets another turn
+        else if (currentRoll == 6) { 
             hasExtraTurn = true;
-        } else { //End turn
-            turnOver = true;
+            for(int i = 1; i <= numOfPlayers; i++){
+                if(players[i] == objCurrentPlayer){
+                    if(i == 1){
+                        setCurrentPlayer(players[numOfPlayers]);
+                    }
+                    else{
+                        setCurrentPlayer(players[i - 1]);
+                    }
+                }
+            }
         }
     }
 
