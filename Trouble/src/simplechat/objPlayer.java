@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 public class objPlayer implements Serializable{
     
-    public objPiece[] piece = new objPiece[3];//Pieces
+    public objPiece[] piece = new objPiece[4];//Pieces
 
     public String strUserName;//Username
     public char pColour;//Player Colour
