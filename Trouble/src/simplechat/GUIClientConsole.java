@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.io.IOException;
+import java.util.concurrent.ThreadLocalRandom;
 import static simplechat.ClientConsole.DEFAULT_PORT;
 /**
  *
@@ -576,8 +577,9 @@ public class GUIClientConsole extends JFrame implements ChatIF {
         pop_O_Matic_Bubble.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
-                tr.rollDie();
-                pop_O_Matic_Bubble.setText(String.valueOf(tr.currentRoll));
+                int roll = ThreadLocalRandom.current().nextInt(1,7);
+                pop_O_Matic_Bubble.setText(String.valueOf(roll));
+                send("#roll " + roll);
             }
         });
         startRed1.addActionListener(new ActionListener(){
@@ -883,7 +885,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
         int startGrid = 0;
         int homeGrid = 0;
         int piecePosition;
-        for(int i=1;i<=tr.numOfPlayers;i++){
+        for(int i=0;i<=tr.numOfPlayers;i++){
             char col = tr.players[i].getColour();
             switch (col){
                     case 'R':

@@ -112,27 +112,30 @@ public class ChatClient extends AbstractClient
             try{
                 int players = message.split(" ").length;
                 Envelope e = new Envelope();
-                Object[] board = new Object[27];
                 if(players == 4){
                     String recipient1 = message.split(" ")[1];
                     String recipient2 = message.split(" ")[2];
                     String recipient3 = message.split(" ")[3];
-                    e = new Envelope(recipient1, recipient2, recipient3, board);
+                    e = new Envelope(recipient1, recipient2, recipient3, game);
                 }
                 else if(players == 3){
                     String recipient1 = message.split(" ")[1];
                     String recipient2 = message.split(" ")[2];
-                    e = new Envelope(recipient1, recipient2, board);
+                    e = new Envelope(recipient1, recipient2, game);
                 }
                 else{
                     String recipient1 = message.split(" ")[1];                
-                    e = new Envelope(recipient1,board);
+                    e = new Envelope(recipient1, game);
                 }
                 sendToServer(e);
             }
             catch(Exception e){
                 e.printStackTrace();
             }
+        }
+        else if(message.startsWith("#roll")){
+            int roll = Integer.parseInt(message.split(" ")[1]);
+            game.setRollDie(roll);
         }
         else if(message.startsWith("#location")){
             int position = Integer.parseInt(message.split(" ")[1]);

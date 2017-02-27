@@ -30,7 +30,7 @@ public class objPlayer implements Serializable{
     //The first index of objPiece is the color, the second index is which individual piece{0,1,2,3}.
     //Creates an array that will be this players game pieces
     public void setStart(){
-        for(int i=0;i>3;i++){
+        for(int i=0;i<=3;i++){
             piece[i] = new objPiece(i);
         }
     }
