@@ -135,34 +135,6 @@ public class Trouble implements Serializable {
     public void rollDie() {
         currentRoll = ThreadLocalRandom.current().nextInt(1, 7);
     }
-
-    //When a player's turn is started, this should be the first method that runs
-    public void onTurnStart() {
-        //currentRoll = rollDie(); //Set the global variable for other classea        
-        //Object[] piece = op.objPiece;        
-        //int position = piecePosition(piece); //Position of the selected piece    
-        //Does the player want to move a character from start?
-        //If yes, check if there is something in the start
-        if (moveFromStart == true && checkStart() == true) {
-            //if (roll == 6) { //Exit the start zone                                
-            //  objBoard[position] = op; //Sets the piece position to the start position 
-        } else { //Don't move                
-            checkWin(); //Calling checkWin because this will always end the turn                
-        }
-    }
-    //If you roll a six and choose not to move out of home
-//        else if //(roll == 6) {            
-    //move(position, roll, currentPlayer, piece); //Move
-    //New turn      
-
-//            checkWin(); //Calling checkWin because this will always end the turn
-//        } 
-//        //They don't want to move a piece from start
-//        else {            
-//            //move(position, roll, currentPlayer, piece); //Move selected piece
-//            checkWin(); //Calling checkWin because this will always end the turn
-//        }
-//    }
     //Check start to see if there are still pieces in it
     public boolean checkStart() {
         boolean isSomeoneInStart = false;
