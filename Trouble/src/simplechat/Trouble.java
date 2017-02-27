@@ -119,25 +119,16 @@ public class Trouble implements Serializable {
     }
 
     
+    
+    
+    
+    
     //returns the random die roll
     public void rollDie() {
         currentRoll = ThreadLocalRandom.current().nextInt(1, 7);
     }
 
-    //Check start to see if there are still pieces in it
-    public boolean checkStart() {
-        boolean isSomeoneInStart = false;
-        for (int i = 0; i < 3; i++) {
-            if (objCurrentPlayer.piece[i].getPosition() == -1) {
-                isSomeoneInStart = true;
-            }
-        }
-        return isSomeoneInStart;
-    }
-
     //Player movement
-    //Takes player's piece and their roll
-    //Handles landing on another piece or not
     public void move(int position) {
         int indexSelectedPiece = 1;
         for (int k = 0; k < 4; k++) {
