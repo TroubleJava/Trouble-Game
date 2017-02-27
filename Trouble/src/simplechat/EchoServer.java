@@ -38,6 +38,7 @@ public class EchoServer extends AbstractServer
    * @param msg The message received from the client.
    * @param client The connection from which the message originated.
    */
+    @Override
     public void handleMessageFromClient(Object msg, ConnectionToClient client)
     {
         String message = msg.toString();
