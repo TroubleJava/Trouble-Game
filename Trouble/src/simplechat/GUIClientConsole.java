@@ -885,7 +885,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
         int startGrid = 0;
         int homeGrid = 0;
         int piecePosition;
-        for(int i=0;i<=tr.numOfPlayers;i++){
+        for(int i=0;i<tr.numOfPlayers;i++){
             char col = tr.players[i].getColour();
             switch (col){
                     case 'R':
@@ -909,7 +909,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                         homeGrid = 56;
                         break;
                 }
-            for(int j=0;j<=3;j++){
+            for(int j=0;j<tr.players[i].piece.length;j++){
                 piecePosition = tr.players[i].piece[j].getPosition();
                 if(piecePosition == -1){
                     theFullMetalBoard[startGrid].setBackground(buttonCol);
@@ -970,7 +970,6 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                 }
             }
             theFullMetalBoard[i].setEnabled(false);
-            System.out.println("Fry is a loser");
         }
     }
     public static void main(String[] args) 
