@@ -58,7 +58,7 @@ public class ChatClient extends AbstractClient
             Trouble tr = (Trouble)(msg);
             game = tr;
             //update board?
-            //((GUIClientConsole)clientUI).displayBoard(ttt);
+            ((GUIClientConsole)clientUI).displayBoard(tr);
             clientUI.display("Your move Chum!");
         }
         else{
