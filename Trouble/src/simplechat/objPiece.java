@@ -14,58 +14,34 @@ import java.io.Serializable;
 public class objPiece implements Serializable{
 
     private int index;
-    private char colour;
     private int position;
     
-    objPiece(int num, char colour){
-    setIndex(num);
-    setColour(colour);
-    setPosition(-1);
-   
+    objPiece(int num){
+        setIndex(num);
+        setPosition(-1);
     }
-
     /**
      * @return the index
      */
     public int getIndex() {
         return index;
     }
-
     /**
      * @param index the index to set
      */
     public void setIndex(int index) {
         this.index = index;
     }
-
-    /**
-     * @return the colour
-     */
-    public char getColour() {
-        return colour;
-    }
-
-    /**
-     * @param colour the colour to set
-     */
-    public void setColour(char colour) {
-        this.colour = colour;
-    }
-
     /**
      * @return the position
      */
     public int getPosition() {
         return position;
     }
-
     /**
      * @param position the position to set
      */
     public void setPosition(int position) {
         this.position = position;
     }
-    
-    
-    
 }

@@ -3,17 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/M:/JavaGame/Trouble-Game/Trouble/src/simplechat/GUIClientConsole.java</file>
-            <file>file:/M:/JavaGame/Trouble-Game/Trouble/src/simplechat/ChatIF.java</file>
-            <file>file:/M:/JavaGame/Trouble-Game/Trouble/src/simplechat/objPiece.java</file>
-            <file>file:/M:/JavaGame/Trouble-Game/Trouble/src/simplechat/EchoServer.java</file>
-            <file>file:/M:/JavaGame/Trouble-Game/Trouble/src/simplechat/Trouble.java</file>
-            <file>file:/M:/JavaGame/Trouble-Game/Trouble/src/simplechat/AbstractClient.java</file>
-            <file>file:/M:/JavaGame/Trouble-Game/Trouble/src/simplechat/objPlayer.java</file>
-            <file>file:/M:/JavaGame/Trouble-Game/Trouble/src/simplechat/ChatClient.java</file>
-            <file>file:/M:/JavaGame/Trouble-Game/Trouble/src/simplechat/ConnectionToClient.java</file>
-            <file>file:/M:/JavaGame/Trouble-Game/Trouble/src/simplechat/Envelope.java</file>
-            <file>file:/M:/JavaGame/Trouble-Game/Trouble/src/simplechat/ClientConsole.java</file>
+            <file>file:/C:/Users/Nedsky/Desktop/Trouble-Game/Trouble/src/simplechat/GUIClientConsole.java</file>
+            <file>file:/C:/Users/Nedsky/Desktop/Trouble-Game/Trouble/src/simplechat/objPlayer.java</file>
+            <file>file:/C:/Users/Nedsky/Desktop/Trouble-Game/Trouble/src/simplechat/Trouble.java</file>
+            <file>file:/C:/Users/Nedsky/Desktop/Trouble-Game/Trouble/src/simplechat/objPiece.java</file>
+            <file>file:/C:/Users/Nedsky/Desktop/Trouble-Game/Trouble/src/simplechat/EchoServer.java</file>
         </group>
     </open-files>
 </project-private>

@@ -19,9 +19,7 @@ public class Trouble implements Serializable {
     public objPlayer player3;
     public objPlayer player4;
     public objPlayer objCurrentPlayer;
-    public objPiece[] board = new objPiece[27];   
-       
-    
+    //public objPiece[] board = new objPiece[27];
     public int currentRoll;
     private boolean moveFromStart = false;
 
@@ -29,7 +27,7 @@ public class Trouble implements Serializable {
      *
      */
     public Trouble(){
-        board = null;
+        //board = null;
     }
     
     
@@ -38,8 +36,8 @@ public class Trouble implements Serializable {
         numOfPlayers = 2;
         player1 = new objPlayer('R',p1);
         player2 = new objPlayer('B',p2);
-        setCurrentPlayer(player1);
-        board = null;
+        setCurrentPlayer(player2);
+        //board = null;
     }
     
     public Trouble(String p1, String p2, String p3){
@@ -47,8 +45,8 @@ public class Trouble implements Serializable {
         player1 = new objPlayer('R',p1);
         player2 = new objPlayer('B',p2);
         player3 = new objPlayer('Y',p3);
-        setCurrentPlayer(player1);
-        board = null;
+        setCurrentPlayer(player3);
+        //board = null;
     }
     
     public Trouble(String p1, String p2, String p3, String p4){
@@ -57,16 +55,13 @@ public class Trouble implements Serializable {
         player2 = new objPlayer('B',p2);
         player3 = new objPlayer('Y',p3);
         player4 = new objPlayer('G',p4);
-        setCurrentPlayer(player1);
-        board = null;
+        setCurrentPlayer(player4);
+        //board = null;
     }
 
     public void switchActivePlayer(){
         switch(numOfPlayers){
             case 2:
-                System.out.println("Name is: " + getCurrentPlayer().getStrUserName());
-                System.out.println("Player 1 is: " + player1.getStrUserName());
-                System.out.println("Player 2 is: " + player2.getStrUserName());
                 if(objCurrentPlayer.equals(player1)){
                     setCurrentPlayer(player2);
                     break;
@@ -124,19 +119,19 @@ public class Trouble implements Serializable {
     /**
      * @return the objTHEGame
      */
-    public objPiece[] getBoard() {
-        return board;
-    }
+    //public objPiece[] getBoard() {
+    //    return board;
+    //}
 
     /**
      * @param objTHEGame the objTHEGame to set
      */
-    public void setBoard(objPiece[] board) {
-        this.board = board;
-    }
+    //public void setBoard(objPiece[] board) {
+    //    this.board = board;
+    //}
 
     //starts a new game with players that are available
-    public void StartGame() {}
+    //public void StartGame() {}
 
     //returns the random die roll
     public void rollDie() {
@@ -145,13 +140,8 @@ public class Trouble implements Serializable {
     
     
     //When a player's turn is started, this should be the first method that runs
-    public void onTurnStart(objPiece pp) {
+    public void onTurnStart() {
          //currentRoll = rollDie(); //Set the global variable for other classea
-        
-        System.out.println("My position: " + pp.getPosition());
-        System.out.println("My index: " + pp.getIndex());
-        System.out.println("My color: " + pp.getColour());
-    
         
         //Object[] piece = op.objPiece;
         
@@ -192,9 +182,13 @@ public class Trouble implements Serializable {
     //Player movement
     //Takes player's piece and their roll
     //Handles landing on another piece or not
-    public void move(int pos, int n, char currentPlayer, Object[] piece) {        
+    public void move(objPiece movedPiece) {        
         //Check if landing on another piece
-        if (objBoard[pos + n] != null) {
+        if (currentRoll != 6) {
+            
+
+
+
             //Check if the landed on piece is a different players
             if (op.getColour() != op.getColour()) {
                 //Bounce the landed on piece back to its start square
@@ -224,15 +218,11 @@ public class Trouble implements Serializable {
     public void checkWin() {
         //Check amount of pieces in home
         if (op.getHomeCount() == 4) {
-            //YOU WIN!!!    
-            
+            //YOU WIN!!!
         }
         //Continue with game
-        else { 
-            
-            
+        else {    
         }
-
     }
     
 }

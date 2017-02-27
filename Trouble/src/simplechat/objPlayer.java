@@ -19,27 +19,19 @@ public class objPlayer implements Serializable{
     public objPlayer(char colour,String UserName){
         //Set this players associated colour as a character
         setColour(colour);
-        
         //Set the pieces start positions
         setStart();
-        
         //Set username
         setStrUserName(UserName);
-        
-        
-
     }
-
     
     //EXAMPLE: The player playing as RED wants to find his 3rd piece.
     //objPiece[0]='R' AND objPiece[1]='2'
     //The first index of objPiece is the color, the second index is which individual piece{0,1,2,3}.
-
-    
     //Creates an array that will be this players game pieces
     public void setStart(){
         for(int i=0;i>3;i++){
-            piece[i] = new objPiece(i,pColour);
+            piece[i] = new objPiece(i);
         }
     }
 //    Set player colour
