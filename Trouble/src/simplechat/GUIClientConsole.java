@@ -90,19 +90,19 @@ public class GUIClientConsole extends JFrame implements ChatIF {
     private JButton startYellow2 = new JButton("Y");
     private JButton startYellow3 = new JButton("Y");
     private JButton startYellow4 = new JButton("Y");
-    private JButton homeYellow1 = new JButton("E");
-    private JButton homeYellow2 = new JButton("M");
-    private JButton homeYellow3 = new JButton("O");
-    private JButton homeYellow4 = new JButton("H");
+    private JButton homeYellow1 = new JButton("H");
+    private JButton homeYellow2 = new JButton("O");
+    private JButton homeYellow3 = new JButton("M");
+    private JButton homeYellow4 = new JButton("E");
     
     private JButton startBlue1 = new JButton("B");
     private JButton startBlue2 = new JButton("B");
     private JButton startBlue3 = new JButton("B");
     private JButton startBlue4 = new JButton("B");
-    private JButton homeBlue1 = new JButton("E");
-    private JButton homeBlue2 = new JButton("M");
-    private JButton homeBlue3 = new JButton("O");
-    private JButton homeBlue4 = new JButton("H");
+    private JButton homeBlue1 = new JButton("H");
+    private JButton homeBlue2 = new JButton("O");
+    private JButton homeBlue3 = new JButton("M");
+    private JButton homeBlue4 = new JButton("E");
     
     private JButton startGreen1 = new JButton("G");
     private JButton startGreen2 = new JButton("G");
@@ -167,7 +167,13 @@ public class GUIClientConsole extends JFrame implements ChatIF {
 	Panel bottom = new Panel();
         Panel playArea = new Panel();
         
-	theFullMetalBoard = new JButton[] {startRed1,startRed2,startRed3,startRed4,homeRed1,homeRed2,homeRed3,homeRed4,startBlue1,startBlue2,startBlue3,startBlue4,homeBlue1,homeBlue2,homeBlue3,homeBlue4,startYellow1,startYellow2,startYellow3,startYellow4,homeYellow1,homeYellow2,homeYellow3,homeYellow4,startGreen1,startGreen2,startGreen3,startGreen4,homeGreen1,homeGreen2,homeGreen3,homeGreen4};
+	theFullMetalBoard = new JButton[] {board0,board1,board2,board3,board4,board5,board6,board7,board8,board9,
+            board10,board11,board12,board13,board14,board15,board16,board17,board18,board19,board20,board21,
+            board22,board23,board24,board25,board26,board27,startRed1,startRed2,startRed3,startRed4,startBlue1,
+            startBlue2,startBlue3,startBlue4,startYellow1,startYellow2,startYellow3,startYellow4,startGreen1,
+            startGreen2,startGreen3,startGreen4,homeRed1,homeRed2,homeRed3,homeRed4,homeBlue1,homeBlue2,
+            homeBlue3,homeBlue4,homeYellow1,homeYellow2,homeYellow3,homeYellow4,homeGreen1,homeGreen2,
+            homeGreen3,homeGreen4};
         
         //playArea.setLayout(new GridLayout(10,10,5,5));
         playArea.setLayout(new GridBagLayout());
@@ -309,17 +315,17 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                 c.gridx = 3;
                 playArea.add(insideBoard1,c);
                 c.gridx = 4;
-                playArea.add(homeYellow4,c);
-                homeYellow4.setEnabled(false);
-                c.gridx = 5;
-                playArea.add(homeYellow3,c);
-                homeYellow3.setEnabled(false);
-                c.gridx = 6;
-                playArea.add(homeYellow2,c);
-                homeYellow2.setEnabled(false);
-                c.gridx = 7;
                 playArea.add(homeYellow1,c);
                 homeYellow1.setEnabled(false);
+                c.gridx = 5;
+                playArea.add(homeYellow2,c);
+                homeYellow2.setEnabled(false);
+                c.gridx = 6;
+                playArea.add(homeYellow3,c);
+                homeYellow3.setEnabled(false);
+                c.gridx = 7;
+                playArea.add(homeYellow4,c);
+                homeYellow4.setEnabled(false);
                 c.gridx = 8;
                 playArea.add(board8,c);
                 board8.setEnabled(false);
@@ -372,8 +378,8 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                         c.gridheight = 1;
                         playArea.add(insideBoard8,c);
                         c.gridx = 7;
-                        playArea.add(homeBlue4,c);
-                        homeBlue4.setEnabled(false);
+                        playArea.add(homeBlue1,c);
+                        homeBlue1.setEnabled(false);
                         c.gridx = 8;
                         playArea.add(board10,c);
                         board10.setEnabled(false);
@@ -393,14 +399,14 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                             c.gridx = 6;
                             playArea.add(insideBoard10,c);
                             c.gridx = 7;
-                            playArea.add(homeBlue3,c);
-                            homeBlue3.setEnabled(false);
+                            playArea.add(homeBlue2,c);
+                            homeBlue2.setEnabled(false);
                             c.gridx = 8;
                             playArea.add(board11,c);
                             board11.setEnabled(false);
                             c.gridx = 9;
-                            playArea.add(startBlue4,c);
-                            startBlue4.setEnabled(false);
+                            playArea.add(startBlue1,c);
+                            startBlue1.setEnabled(false);
                                 c.gridx = 0;
                                 c.gridy = 6;
                                 playArea.add(outsideBoard19,c);
@@ -418,14 +424,14 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                                 c.gridx = 6;
                                 playArea.add(insideBoard15,c);
                                 c.gridx = 7;
-                                playArea.add(homeBlue2,c);
-                                homeBlue2.setEnabled(false);
+                                playArea.add(homeBlue3,c);
+                                homeBlue3.setEnabled(false);
                                 c.gridx = 8;
                                 playArea.add(board12,c);
                                 board12.setEnabled(false);
                                 c.gridx = 9;
-                                playArea.add(startBlue3,c);
-                                startBlue3.setEnabled(false);
+                                playArea.add(startBlue2,c);
+                                startBlue2.setEnabled(false);
                                     c.gridx = 0;
                                     c.gridy = 7;
                                     playArea.add(outsideBoard18,c);
@@ -447,14 +453,14 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                                     c.gridx = 6;
                                     playArea.add(insideBoard16,c);
                                     c.gridx = 7;
-                                    playArea.add(homeBlue1,c);
-                                    homeBlue1.setEnabled(false);
+                                    playArea.add(homeBlue4,c);
+                                    homeBlue4.setEnabled(false);
                                     c.gridx = 8;
                                     playArea.add(board13,c);
                                     board13.setEnabled(false);
                                     c.gridx = 9;
-                                    playArea.add(startBlue2,c);
-                                    startBlue2.setEnabled(false);
+                                    playArea.add(startBlue3,c);
+                                    startBlue3.setEnabled(false);
                                         c.gridx = 0;
                                         c.gridy = 8;
                                         playArea.add(outsideBoard17,c);
@@ -483,8 +489,8 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                                         playArea.add(board14,c);
                                         board14.setEnabled(false);
                                         c.gridx = 9;
-                                        playArea.add(startBlue1,c);
-                                        startBlue1.setEnabled(false);
+                                        playArea.add(startBlue4,c);
+                                        startBlue4.setEnabled(false);
                                             c.gridx = 0;
                                             c.gridy = 9;
                                             playArea.add(outsideBoard16,c);
@@ -555,6 +561,12 @@ public class GUIClientConsole extends JFrame implements ChatIF {
 		  	 	
 	setVisible(true);
         
+        endTurn.addActionListener( new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                send("#endTurn");
+            }
+        });
         playTroubleB.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
@@ -854,45 +866,96 @@ public class GUIClientConsole extends JFrame implements ChatIF {
         System.exit(0);
     }
     public void displayBoard(Trouble tr){
+        resetAllFullBoard();
         //array indexing
         //Board button 0=0
         //Board button 27=27
         //Board = 0-27
         //Red Start = 28-31
-        //Red Home = 32-35
-        //Blue Start = 36-39
-        //Blue Home = 40-43
-        //Yellow Start = 44-47
-        //Yellow Home = 48-51
-        //Green Start = 52-55
+        //Blue Start = 32-35
+        //Yellow Start = 36-39
+        //Green Start = 40-43
+        //Red Home = 44-47
+        //Blue Home = 48-51
+        //Yellow Home = 52-55
         //Green Home = 56-59
-        String buttonCol;
-        int startGrid;
-        int homeGrid;
+        Color buttonCol = Color.white;
+        int startGrid = 0;
+        int homeGrid = 0;
         int piecePosition;
         for(int i=1;i<=tr.numOfPlayers;i++){
-            char col = tr.players[i].getColor;
+            char col = tr.players[i].getColour();
             switch (col){
                     case 'R':
-                        buttonCol = "red";
+                        buttonCol = Color.red;
                         startGrid = 28;
-                        homeGrid = 32;
+                        homeGrid = 44;
                     case 'B':
-                        buttonCol = "blue";
-                        startGrid = 36;
-                        homeGrid = 40;
-                    case 'Y':
-                        buttonCol = "yellow";
-                        startGrid = 44;
+                        buttonCol = Color.blue;
+                        startGrid = 32;
                         homeGrid = 48;
+                    case 'Y':
+                        buttonCol = Color.yellow;
+                        startGrid = 36;
+                        homeGrid = 52;
                     case 'G':
-                        buttonCol = "green";
-                        startGrid = 52;
+                        buttonCol = Color.green;
+                        startGrid = 40;
                         homeGrid = 56;
                 }
             for(int j=0;j<=3;j++){
-                piecePosition = tr.players[1].piece[j].getPosition;
+                piecePosition = tr.players[1].piece[j].getPosition();
+                if(piecePosition == -1){
+                    theFullMetalBoard[startGrid].setBackground(buttonCol);
+                    theFullMetalBoard[startGrid].setText(String.valueOf(col));
+                    theFullMetalBoard[startGrid].setEnabled(true);
+                    startGrid++;
+                }
+                else if(piecePosition == 28){
+                    theFullMetalBoard[homeGrid].setBackground(buttonCol);
+                    theFullMetalBoard[homeGrid].setText(String.valueOf(col));
+                    theFullMetalBoard[homeGrid].setEnabled(true);
+                    homeGrid++;
+                }
+                else{
+                    theFullMetalBoard[piecePosition].setBackground(buttonCol);
+                    theFullMetalBoard[piecePosition].setText(String.valueOf(col));
+                    theFullMetalBoard[piecePosition].setEnabled(true);
+                }
             }
+        }
+    }
+    
+    public void resetAllFullBoard(){
+        for(int i=0;i<theFullMetalBoard.length;i++){
+            if(i>=0 && i<=27){
+                //Board
+                theFullMetalBoard[i].setBackground(Color.gray);
+                theFullMetalBoard[i].setText("-");
+            }
+            else if(i>=28 && i<=59){
+                theFullMetalBoard[i].setBackground(Color.white);
+                //printStart
+                switch (i){
+                    case 28: case 32: case 36: case 40:
+                        theFullMetalBoard[i].setText("ST");
+                    case 29: case 33: case 37: case 41:
+                        theFullMetalBoard[i].setText("A");
+                    case 30: case 34: case 38: case 42:
+                        theFullMetalBoard[i].setText("R");
+                    case 31: case 35: case 39: case 43:
+                        theFullMetalBoard[i].setText("T");
+                    case 44: case 48: case 52: case 56:
+                        theFullMetalBoard[i].setText("H");
+                    case 45: case 49: case 53: case 57:
+                        theFullMetalBoard[i].setText("O");
+                    case 46: case 50: case 54: case 58:
+                        theFullMetalBoard[i].setText("M");
+                    case 47: case 51: case 55: case 59:
+                        theFullMetalBoard[i].setText("E");
+                }
+            }
+            theFullMetalBoard[i].setEnabled(false);
         }
     }
     public static void main(String[] args) 

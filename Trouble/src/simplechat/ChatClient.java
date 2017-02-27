@@ -134,6 +134,10 @@ public class ChatClient extends AbstractClient
                 e.printStackTrace();
             }
         }
+        else if(message.startsWith("#location")){
+            int position = Integer.parseInt(message.split(" ")[1]);
+            game.move(position);
+        }
         else if(message.startsWith("#logOn")){
             try{
                 openConnection();

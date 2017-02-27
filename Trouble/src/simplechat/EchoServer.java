@@ -69,10 +69,10 @@ public class EchoServer extends AbstractServer
                 sendToAClient("You are playing Trouble!", r1);
             }
             System.out.println("send to handle");
-            handleTrouble(tr);
+            handleTrouble(tr,client);
         }
         else if(msg instanceof Trouble){
-            handleTrouble((Trouble)(msg));
+            handleTrouble((Trouble)(msg),client);
         }
         else if(message.charAt(0)=='#'){
             System.out.println("Command found");
@@ -84,10 +84,9 @@ public class EchoServer extends AbstractServer
         }
     }
     
-    public void handleTrouble(Trouble tr){
-        
+    public void handleTrouble(Trouble tr,ConnectionToClient client){
         tr.switchActivePlayer();
-        sendToAClient(tr,tr.getCurrentPlayer().getStrUserName());
+        sendToAllClientsInRoom(tr,client);
     }
     
     public void handleServerCommand(Object msg, ConnectionToClient client){
