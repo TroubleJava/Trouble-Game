@@ -27,6 +27,7 @@ public class Trouble implements Serializable {
     public boolean playerWin = false;
     public boolean hasExtraTurn = false;
     public boolean turnOver = false;
+
     /**
      *
      */
@@ -117,24 +118,12 @@ public class Trouble implements Serializable {
         this.objCurrentPlayer = objCurrentPlayer;
     }
 
-    /**
-     * @return the objTHEGame
-     */
-    //public objPiece[] getBoard() {
-    //    return board;
-    //}
-    /**
-     * @param objTHEGame the objTHEGame to set
-     */
-    //public void setBoard(objPiece[] board) {
-    //    this.board = board;
-    //}
-    //starts a new game with players that are available
-    //public void StartGame() {}
+    
     //returns the random die roll
     public void rollDie() {
         currentRoll = ThreadLocalRandom.current().nextInt(1, 7);
     }
+
     //Check start to see if there are still pieces in it
     public boolean checkStart() {
         boolean isSomeoneInStart = false;
@@ -156,40 +145,44 @@ public class Trouble implements Serializable {
                 indexSelectedPiece = objCurrentPlayer.piece[k].getIndex();
             }
         }
-
-        //Check if the landed on piece is a different players
-        for (int i = 0; i < numOfPlayers; i++) {
-            for (int j = 0; j < 4; j++) {
-                if (players[i].piece[j].getPosition() == (position + currentRoll)) {
-                    if (objCurrentPlayer.getColour() != players[i].getColour()) { //Send to home
-                        players[i].piece[j].setPosition(-1);
-                        //Check if roll is outside of bounds
-                        if ((position + currentRoll) > 27) {
+        //Moving from start
+        if ((position == -1) && (currentRoll == 6)) {
+            char cplayer = objCurrentPlayer.getColour();
+            objCurrentPlayer.piece[indexSelectedPiece].setPosition(objCurrentPlayer.getStartIndex(cplayer));
+        } else {
+            //Check if the landed on piece is a different players
+            for (int i = 0; i < numOfPlayers; i++) {
+                for (int j = 0; j < 4; j++) {
+                    if (players[i].piece[j].getPosition() == (position + currentRoll)) {
+                        if (objCurrentPlayer.getColour() != players[i].getColour()) { //Send to home
+                            players[i].piece[j].setPosition(-1);
+                            //Check if roll is outside of bounds
+                            if ((position + currentRoll) > 27) {
+                                int something = (position + currentRoll) - 27;
+                                objCurrentPlayer.piece[indexSelectedPiece].setPosition(something);
+                            } else {
+                                objCurrentPlayer.piece[indexSelectedPiece].setPosition(position + currentRoll);
+                            }
+                        } else if (objCurrentPlayer.getColour() == players[i].getColour()) { //Same colour piece                            
+                            break;
+                        }
+                    } //Landing on home
+                    else if ((position + currentRoll) >= objCurrentPlayer.getHomeIndex(objCurrentPlayer.getColour())) {
+                        objCurrentPlayer.piece[indexSelectedPiece].setPosition(28);
+                    } else //Nothing on the spot                    
+                    //Check if roll is outside of bounds
+                     if ((position + currentRoll) > 27) {
                             int something = (position + currentRoll) - 27;
                             objCurrentPlayer.piece[indexSelectedPiece].setPosition(something);
                         } else {
                             objCurrentPlayer.piece[indexSelectedPiece].setPosition(position + currentRoll);
                         }
-                    } else if (objCurrentPlayer.getColour() == players[i].getColour()) { //Same colour piece                            
-                        break;
-                    }
-                } //Landing on home
-                else if ((position + currentRoll) >= objCurrentPlayer.getHomeIndex(objCurrentPlayer.getColour())) {
-                    objCurrentPlayer.piece[indexSelectedPiece].setPosition(28);
-                } else //Nothing on the spot                    
-                //Check if roll is outside of bounds
-                {
-                    if ((position + currentRoll) > 27) {
-                        int something = (position + currentRoll) - 27;
-                        objCurrentPlayer.piece[indexSelectedPiece].setPosition(something);
-                    } else {
-                        objCurrentPlayer.piece[indexSelectedPiece].setPosition(position + currentRoll);
-                    }
                 }
             }
         }
         checkWin();
     }
+
     //Last thing to do on a turn
     public void checkWin() {
         //Check amount of pieces in home
@@ -206,7 +199,7 @@ public class Trouble implements Serializable {
         else if (currentRoll == 6) { //Do another turn
             hasExtraTurn = true;
         } else { //End turn
-            turnOver = true;            
+            turnOver = true;
         }
     }
 
