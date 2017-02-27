@@ -7,6 +7,7 @@ package simplechat;
 
 import java.io.Serializable;
 import java.util.concurrent.ThreadLocalRandom;
+
 /**
  *
  * @author scherr3143
@@ -19,89 +20,89 @@ public class Trouble implements Serializable {
     public objPlayer player3;
     public objPlayer player4;
     public objPlayer objCurrentPlayer;
+    public objPlayer[] players;
     //public objPiece[] board = new objPiece[27];
     public int currentRoll;
     private boolean moveFromStart = false;
-
+    public boolean playerWin = false;
+    public boolean hasExtraTurn = false;
+    public boolean turnOver = false;
     /**
      *
      */
-    public Trouble(){
+    public Trouble() {
         //board = null;
     }
-    
-    
-    public Trouble(String p1, String p2){
-        
+
+    public Trouble(String p1, String p2) {
+
         numOfPlayers = 2;
-        player1 = new objPlayer('R',p1);
-        player2 = new objPlayer('B',p2);
+        player1 = new objPlayer('R', p1);
+        player2 = new objPlayer('B', p2);
+        players = new objPlayer[]{player1, player2};
         setCurrentPlayer(player2);
         //board = null;
     }
-    
-    public Trouble(String p1, String p2, String p3){
+
+    public Trouble(String p1, String p2, String p3) {
         numOfPlayers = 3;
-        player1 = new objPlayer('R',p1);
-        player2 = new objPlayer('B',p2);
-        player3 = new objPlayer('Y',p3);
+        player1 = new objPlayer('R', p1);
+        player2 = new objPlayer('B', p2);
+        player3 = new objPlayer('Y', p3);
+        players = new objPlayer[]{player1, player2, player3};
         setCurrentPlayer(player3);
         //board = null;
     }
-    
-    public Trouble(String p1, String p2, String p3, String p4){
+
+    public Trouble(String p1, String p2, String p3, String p4) {
         numOfPlayers = 4;
-        player1 = new objPlayer('R',p1);
-        player2 = new objPlayer('B',p2);
-        player3 = new objPlayer('Y',p3);
-        player4 = new objPlayer('G',p4);
+        player1 = new objPlayer('R', p1);
+        player2 = new objPlayer('B', p2);
+        player3 = new objPlayer('Y', p3);
+        player4 = new objPlayer('G', p4);
+        players = new objPlayer[]{player1, player2, player3, player4};
         setCurrentPlayer(player4);
         //board = null;
     }
 
-    public void switchActivePlayer(){
-        switch(numOfPlayers){
+    public void switchActivePlayer() {
+        switch (numOfPlayers) {
             case 2:
-                if(objCurrentPlayer.equals(player1)){
+                if (objCurrentPlayer.equals(player1)) {
                     setCurrentPlayer(player2);
                     break;
-                }
-                else{
+                } else {
                     setCurrentPlayer(player1);
                     break;
                 }
             case 3:
-                if(objCurrentPlayer.equals(player1)){
+                if (objCurrentPlayer.equals(player1)) {
                     setCurrentPlayer(player2);
                     break;
-                }
-                else if(objCurrentPlayer.equals(player2)){
+                } else if (objCurrentPlayer.equals(player2)) {
                     setCurrentPlayer(player3);
                     break;
-                }
-                else{
+                } else {
                     setCurrentPlayer(player1);
                     break;
                 }
             case 4:
-                if(objCurrentPlayer.equals(player1)){
+                if (objCurrentPlayer.equals(player1)) {
                     setCurrentPlayer(player2);
                     break;
-                }
-                else if(objCurrentPlayer.equals(player2)){
+                } else if (objCurrentPlayer.equals(player2)) {
                     setCurrentPlayer(player3);
                     break;
-                }
-                else if(objCurrentPlayer.equals(player3)){
+                } else if (objCurrentPlayer.equals(player3)) {
                     setCurrentPlayer(player4);
                     break;
-                }
-                else{
+                } else {
                     setCurrentPlayer(player1);
                     break;
                 }
         }
     }
+
     /**
      * @return the intCurrentPlayer
      */
@@ -122,45 +123,38 @@ public class Trouble implements Serializable {
     //public objPiece[] getBoard() {
     //    return board;
     //}
-
     /**
      * @param objTHEGame the objTHEGame to set
      */
     //public void setBoard(objPiece[] board) {
     //    this.board = board;
     //}
-
     //starts a new game with players that are available
     //public void StartGame() {}
-
     //returns the random die roll
     public void rollDie() {
         currentRoll = ThreadLocalRandom.current().nextInt(1, 7);
-    }     
-    
-    
+    }
+
     //When a player's turn is started, this should be the first method that runs
     public void onTurnStart() {
-         //currentRoll = rollDie(); //Set the global variable for other classea
-        
-        //Object[] piece = op.objPiece;
-        
-        //int position = piecePosition(piece); //Position of the selected piece
-    
+        //currentRoll = rollDie(); //Set the global variable for other classea        
+        //Object[] piece = op.objPiece;        
+        //int position = piecePosition(piece); //Position of the selected piece    
         //Does the player want to move a character from start?
-            //If yes, check if there is something in the start
+        //If yes, check if there is something in the start
         if (moveFromStart == true && checkStart() == true) {
             //if (roll == 6) { //Exit the start zone                                
-              //  objBoard[position] = op; //Sets the piece position to the start position 
-            } else { //Don't move                
-                checkWin(); //Calling checkWin because this will always end the turn                
-            }
-        } 
-        //If you roll a six and choose not to move out of home
+            //  objBoard[position] = op; //Sets the piece position to the start position 
+        } else { //Don't move                
+            checkWin(); //Calling checkWin because this will always end the turn                
+        }
+    }
+    //If you roll a six and choose not to move out of home
 //        else if //(roll == 6) {            
-            //move(position, roll, currentPlayer, piece); //Move
-            //New turn      
-            
+    //move(position, roll, currentPlayer, piece); //Move
+    //New turn      
+
 //            checkWin(); //Calling checkWin because this will always end the turn
 //        } 
 //        //They don't want to move a piece from start
@@ -171,58 +165,77 @@ public class Trouble implements Serializable {
 //    }
     //Check start to see if there are still pieces in it
     public boolean checkStart() {
-        boolean isSomeoneInStart = false;        
-        for(int i = 0; i < 3; i++){
+        boolean isSomeoneInStart = false;
+        for (int i = 0; i < 3; i++) {
             if (objCurrentPlayer.piece[i].getPosition() == -1) {
                 isSomeoneInStart = true;
-            }        
+            }
         }
         return isSomeoneInStart;
     }
+
     //Player movement
     //Takes player's piece and their roll
     //Handles landing on another piece or not
-    public void move(objPiece movedPiece) {        
-        //Check if landing on another piece
-        if (currentRoll != 6) {
-            
-
-
-
-            //Check if the landed on piece is a different players
-            if (op.getColour() != op.getColour()) {
-                //Bounce the landed on piece back to its start square
-                char landedOnPiece = objBoard[pos + n].getColour(); //The char player colour of the landed on piece
-                int bounceToHome = op.getHomeIndex(landedOnPiece); //The index of their start                
-                objBoard[pos + n] = null; //Clearing the position
-                objBoard[pos + n] = op; //The players piece is set to that position
-                objBoard[bounceToHome] = op; //The bounced players piece is sent back
-            }            
-        } 
-        //Check if landing in home
-        else if (Integer.parseInt(objBoard[pos + n].toString()) == op.getHomeIndex(currentPlayer)) {
-            //Check to see if it can enter home
-            if(op.getHomeCount() != 4){
-                objBoard[pos] = null; //Destroy old piece before move 
-                op.gotHome(); //It got home
-            }           
+    public void move(int position) {
+        int indexSelectedPiece = 1;
+        for (int k = 0; k < 4; k++) {
+            if (objCurrentPlayer.piece[k].getPosition() == position) {
+                indexSelectedPiece = objCurrentPlayer.piece[k].getIndex();
+            }
         }
-        //Missed home
-        else {                      
-            objBoard[pos + n] = op; //Move
+
+        //Check if the landed on piece is a different players
+        for (int i = 0; i < numOfPlayers; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (players[i].piece[j].getPosition() == (position + currentRoll)) {
+                    if (objCurrentPlayer.getColour() != players[i].getColour()) { //Send to home
+                        players[i].piece[j].setPosition(-1);
+                        //Check if roll is outside of bounds
+                        if ((position + currentRoll) > 27) {
+                            int something = (position + currentRoll) - 27;
+                            objCurrentPlayer.piece[indexSelectedPiece].setPosition(something);
+                        } else {
+                            objCurrentPlayer.piece[indexSelectedPiece].setPosition(position + currentRoll);
+                        }
+                    } else if (objCurrentPlayer.getColour() == players[i].getColour()) { //Same colour piece                            
+                        break;
+                    }
+                } //Landing on home
+                else if ((position + currentRoll) >= objCurrentPlayer.getHomeIndex(objCurrentPlayer.getColour())) {
+                    objCurrentPlayer.piece[indexSelectedPiece].setPosition(28);
+                } else //Nothing on the spot                    
+                //Check if roll is outside of bounds
+                {
+                    if ((position + currentRoll) > 27) {
+                        int something = (position + currentRoll) - 27;
+                        objCurrentPlayer.piece[indexSelectedPiece].setPosition(something);
+                    } else {
+                        objCurrentPlayer.piece[indexSelectedPiece].setPosition(position + currentRoll);
+                    }
+                }
+            }
         }
+        checkWin();
     }
     //Last thing to do on a turn
-        //Check to see if the home counter = 4
-        //If someone wins, shut down!
     public void checkWin() {
         //Check amount of pieces in home
-        if (op.getHomeCount() == 4) {
-            //YOU WIN!!!
+        int homeCount = 0;
+        for (int l = 0; l < 4; l++) {
+            if (objCurrentPlayer.piece[l].getPosition() == 28) {
+                homeCount++;
+            }
         }
-        //Continue with game
-        else {    
+        if (homeCount == 4) {
+            //YOU WIN!!!
+            playerWin = true;
+        } //Continue with game
+        else if (currentRoll == 6) { //Do another turn
+            hasExtraTurn = true;
+        } else { //End turn
+            turnOver = true;            
         }
     }
-    
+
 }
