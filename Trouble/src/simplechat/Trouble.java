@@ -124,8 +124,8 @@ public class Trouble implements Serializable {
     
     
     //returns the random die roll
-    public void rollDie() {
-        currentRoll = ThreadLocalRandom.current().nextInt(1, 7);
+    public void setRollDie(int roll) {
+        currentRoll = roll;
     }
 
     //Player movement
