@@ -52,10 +52,10 @@ public class objPlayer implements Serializable{
                 index=0;
                 break;
             case 'B':
-                index=7;
+                index=14;
                 break;
             case 'Y':
-                index=14;
+                index=7;
                 break;
             case 'G':
                 index=21;
@@ -73,10 +73,10 @@ public class objPlayer implements Serializable{
                 index=27;
                 break;
             case 'B':
-                index=6;
+                index=13;
                 break;
             case 'Y':
-                index=13;
+                index=6;
                 break;
             case 'G':
                 index=20;

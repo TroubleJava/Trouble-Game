@@ -124,10 +124,13 @@ public class Trouble implements Serializable {
             }
         }
         //Moving from start
-        if ((position == -1) && (currentRoll == 6)) {
-            char cplayer = objCurrentPlayer.getColour();
-            objCurrentPlayer.piece[indexSelectedPiece].setPosition(objCurrentPlayer.getStartIndex(cplayer));
-        } else {            
+        if (position == -1){
+            if(currentRoll == 6){
+                char cplayer = objCurrentPlayer.getColour();
+                objCurrentPlayer.piece[indexSelectedPiece].setPosition(objCurrentPlayer.getStartIndex(cplayer));
+            }
+        }
+        else {            
             for (int i = 0; i < numOfPlayers; i++) {
                 for (int j = 0; j < 4; j++) {
                     //Check for a piece in target location
@@ -140,7 +143,7 @@ public class Trouble implements Serializable {
                             //Check if roll is outside of bounds
                             
                             if ((position + currentRoll) > 27) {
-                                int something = (position + currentRoll) - 27;
+                                int something = (position + currentRoll) - 28;
                                 //move it's physical position on the GUI
                                 objCurrentPlayer.piece[indexSelectedPiece].setPosition(something);
                                 //increment how far it is from it's start location
@@ -157,10 +160,10 @@ public class Trouble implements Serializable {
 //                    else if ((position + currentRoll) == objCurrentPlayer.getHomeIndex(objCurrentPlayer.getColour())) {
 //                        objCurrentPlayer.piece[indexSelectedPiece].setPosition(28);
                 //    } 
-                else {//Nothing on the spot                    
+                    else {//Nothing on the spot                    
                     //Check if roll is outside of bounds
-                     if ((position + currentRoll) > 27) {
-                            int something = (position + currentRoll) - 27;
+                        if ((position + currentRoll) > 27) {
+                            int something = (position + currentRoll) - 28;
                             objCurrentPlayer.piece[indexSelectedPiece].setPosition(something);
                             objCurrentPlayer.piece[indexSelectedPiece].setDistanceFromStart(currentRoll);
                         } else {
@@ -194,7 +197,7 @@ public class Trouble implements Serializable {
             for(int i = 1; i <= numOfPlayers; i++){
                 if(players[i] == objCurrentPlayer){
                     if(i == 1){
-                        setCurrentPlayer(players[numOfPlayers]);
+                        setCurrentPlayer(players[numOfPlayers-1]);
                     }
                     else{
                         setCurrentPlayer(players[i - 1]);
