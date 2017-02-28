@@ -24,6 +24,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
     private JButton sendB = new JButton("Send Message");
     private JButton quitB = new JButton("Quit Application");
     private JButton endTurn = new JButton("End Turn");
+    private JButton identifyB = new JButton("Identify Players");
     private JButton pop_O_Matic_Bubble = new JButton("P O P");
     private JButton playTroubleB = new JButton("Play Trouble");
     
@@ -76,7 +77,6 @@ public class GUIClientConsole extends JFrame implements ChatIF {
     private JLabel blank7LB = new JLabel("", JLabel.RIGHT);
     private JLabel blank8LB = new JLabel("", JLabel.RIGHT);
     private JLabel blank9LB = new JLabel("", JLabel.RIGHT);
-    private JLabel blank10LB = new JLabel("", JLabel.RIGHT);
     
     private JButton startRed1 = new JButton("R");
     private JButton startRed2 = new JButton("R");
@@ -153,6 +153,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
     private JLabel insideBoard16 = new JLabel("");
     
     private JTextArea messageList = new JTextArea(10,15);
+    private JScrollPane scroll = new JScrollPane(messageList);
     
     private String host;
     private int port;
@@ -175,6 +176,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
             startGreen2,startGreen3,startGreen4,homeRed1,homeRed2,homeRed3,homeRed4,homeBlue1,homeBlue2,
             homeBlue3,homeBlue4,homeYellow1,homeYellow2,homeYellow3,homeYellow4,homeGreen1,homeGreen2,
             homeGreen3,homeGreen4};
+        
         
         //playArea.setLayout(new GridLayout(10,10,5,5));
         playArea.setLayout(new GridBagLayout());
@@ -538,30 +540,38 @@ public class GUIClientConsole extends JFrame implements ChatIF {
 	bottom.add(portLB);
         bottom.add(blank3LB);
         
+        bottom.add(identifyB);
         bottom.add(blank4LB);
-        bottom.add(blank5LB);
         bottom.add(endTurn);
         endTurn.setEnabled(false);
         
+        bottom.add(blank5LB);
         bottom.add(blank6LB);
-        bottom.add(blank7LB);
         bottom.add(playTroubleB);
         playTroubleB.setEnabled(false);
         
         bottom.add(hostTxF);
+        bottom.add(blank7LB);
         bottom.add(blank8LB);
-        bottom.add(blank9LB);
         
         bottom.add(portTxF);
-        bottom.add(blank10LB);
+        bottom.add(blank9LB);
         bottom.add(quitB);
         
-        add( "East", messageList);
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        
+        add( "East", scroll);
 	add( "South" , bottom);
         add( "Center", playArea);
 		  	 	
 	setVisible(true);
         
+        identifyB.addActionListener( new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                identify();
+            }
+        });
         endTurn.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
@@ -572,6 +582,10 @@ public class GUIClientConsole extends JFrame implements ChatIF {
             public void actionPerformed(ActionEvent e)
             {
                 send("#sendTrouble " + messageTxF.getText());
+                for(int i=0;i<tr.numOfPlayers;i++){
+                    String player = tr.players[i].getStrUserName() + " is the colour " + tr.players[i].pColour;
+                    display(player);
+                }
             }
         });
         pop_O_Matic_Bubble.addActionListener( new ActionListener(){
@@ -579,6 +593,7 @@ public class GUIClientConsole extends JFrame implements ChatIF {
             {
                 int roll = ThreadLocalRandom.current().nextInt(1,7);
                 pop_O_Matic_Bubble.setText(String.valueOf(roll));
+                pop_O_Matic_Bubble.setEnabled(false);
                 send("#roll " + roll);
             }
         });
@@ -835,6 +850,12 @@ public class GUIClientConsole extends JFrame implements ChatIF {
         client.handleMessageFromClientUI(message);
         messageTxF.setText("");
     }
+    public void identify(){
+        for(int i=0;i<tr.numOfPlayers;i++){
+            String player = tr.players[i].getStrUserName() + " is the colour " + tr.players[i].pColour;
+            display(player);
+        }
+    }
     public void display(String message ){
         //if(messageList.getLineCount() != null){
             messageList.append(message+"\n");
@@ -885,6 +906,10 @@ public class GUIClientConsole extends JFrame implements ChatIF {
         int homeGrid = 0;
         int piecePosition;
         for(int i=0;i<tr.numOfPlayers;i++){
+            boolean pressMe = false;
+            if(tr.objCurrentPlayer.getStrUserName()==tr.players[i].getStrUserName()){
+                pressMe = true;
+            }
             char col = tr.players[i].getColour();
             switch (col){
                     case 'R':
@@ -913,19 +938,19 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                 if(piecePosition == -1){
                     theFullMetalBoard[startGrid].setBackground(buttonCol);
                     theFullMetalBoard[startGrid].setText(String.valueOf(col));
-                    theFullMetalBoard[startGrid].setEnabled(true);
+                    theFullMetalBoard[startGrid].setEnabled(pressMe);
                     startGrid++;
                 }
                 else if(piecePosition == 28){
                     theFullMetalBoard[homeGrid].setBackground(buttonCol);
                     theFullMetalBoard[homeGrid].setText(String.valueOf(col));
-                    theFullMetalBoard[homeGrid].setEnabled(true);
+                    theFullMetalBoard[homeGrid].setEnabled(false);
                     homeGrid++;
                 }
                 else{
                     theFullMetalBoard[piecePosition].setBackground(buttonCol);
                     theFullMetalBoard[piecePosition].setText(String.valueOf(col));
-                    theFullMetalBoard[piecePosition].setEnabled(true);
+                    theFullMetalBoard[piecePosition].setEnabled(pressMe);
                 }
             }
         }
