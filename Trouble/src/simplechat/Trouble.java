@@ -194,7 +194,7 @@ public class Trouble implements Serializable {
         //Player gets another turn
         else if (currentRoll == 6) { 
             hasExtraTurn = true;
-            for(int i = 1; i <= numOfPlayers; i++){
+            for(int i = 0; i < numOfPlayers; i++){
                 if(players[i] == objCurrentPlayer){
                     if(i == 1){
                         setCurrentPlayer(players[numOfPlayers-1]);
@@ -206,5 +206,4 @@ public class Trouble implements Serializable {
             }
         }
     }
-
 }
