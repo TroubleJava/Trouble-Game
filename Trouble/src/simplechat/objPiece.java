@@ -15,8 +15,10 @@ public class objPiece implements Serializable{
 
     private int index;
     private int position;
+    private int fromStart;
     
     objPiece(int num){
+        setDistanceFromStart(0);
         setIndex(num);
         setPosition(-1);
     }
@@ -43,5 +45,22 @@ public class objPiece implements Serializable{
      */
     public void setPosition(int position) {
         this.position = position;
+    }
+    
+    public void setDistanceFromStart(int fromstart){
+        if(fromstart==0){
+            this.fromStart=0;
+        }
+        else if(this.fromStart > 28){
+            this.fromStart=28;
+        }
+        else{
+            this.fromStart += fromstart;
+        }
+        
+        
+    }
+    public int fromStart(){
+        return fromStart;
     }
 }
