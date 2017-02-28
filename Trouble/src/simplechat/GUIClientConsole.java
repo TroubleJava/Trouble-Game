@@ -812,7 +812,6 @@ public class GUIClientConsole extends JFrame implements ChatIF {
             public void actionPerformed(ActionEvent e)
             {
 		close();
-		//display(messageTxF.getText()+"\n" );
             }
         });
         openB.addActionListener( new ActionListener(){
@@ -930,6 +929,8 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                 }
             }
         }
+        pop_O_Matic_Bubble.setEnabled(true);
+        endTurn.setEnabled(true);
     }
     
     public void resetAllFullBoard(){

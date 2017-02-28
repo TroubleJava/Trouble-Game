@@ -82,7 +82,7 @@ public class EchoServer extends AbstractServer
         }
     }
     
-    public void handleTrouble(Trouble tr,ConnectionToClient client){
+    public void handleTrouble(Trouble tr, ConnectionToClient client){
         tr.switchActivePlayer();
         sendToAllClientsInRoom(tr,client);
     }

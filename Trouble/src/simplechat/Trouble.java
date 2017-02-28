@@ -71,36 +71,30 @@ public class Trouble implements Serializable {
             case 2:
                 if (objCurrentPlayer.equals(player1)) {
                     setCurrentPlayer(player2);
-                    break;
                 } else {
                     setCurrentPlayer(player1);
-                    break;
                 }
+                break;
             case 3:
                 if (objCurrentPlayer.equals(player1)) {
                     setCurrentPlayer(player2);
-                    break;
                 } else if (objCurrentPlayer.equals(player2)) {
                     setCurrentPlayer(player3);
-                    break;
                 } else {
                     setCurrentPlayer(player1);
-                    break;
                 }
+                break;
             case 4:
                 if (objCurrentPlayer.equals(player1)) {
                     setCurrentPlayer(player2);
-                    break;
                 } else if (objCurrentPlayer.equals(player2)) {
                     setCurrentPlayer(player3);
-                    break;
                 } else if (objCurrentPlayer.equals(player3)) {
                     setCurrentPlayer(player4);
-                    break;
                 } else {
                     setCurrentPlayer(player1);
-                    break;
                 }
+                break;
         }
     }
 
@@ -117,17 +111,10 @@ public class Trouble implements Serializable {
     public void setCurrentPlayer(objPlayer objCurrentPlayer) {
         this.objCurrentPlayer = objCurrentPlayer;
     }
-
-    
-    
-    
-    
-    
     //returns the random die roll
     public void setRollDie(int roll) {
         currentRoll = roll;
     }
-
     //Player movement
     public void move(int position) {
         int indexSelectedPiece = 1;
@@ -190,12 +177,8 @@ public class Trouble implements Serializable {
         }
         if (homeCount == 4) {
             //YOU WIN!!!
-            playerWin = true;
-            
-            
-            
-            
-        } 
+            playerWin = true;   
+        }
         //Continue with game
         //Player gets another turn
         else if (currentRoll == 6) { 

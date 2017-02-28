@@ -59,7 +59,7 @@ public class ChatClient extends AbstractClient
             game = tr;
             //update board?
             ((GUIClientConsole)clientUI).displayBoard(tr);
-            clientUI.display("Your move Chum!");
+            clientUI.display(String.valueOf(tr.objCurrentPlayer.strUserName) + "'s move!");
         }
         else{
             clientUI.display(msg.toString());
@@ -128,6 +128,14 @@ public class ChatClient extends AbstractClient
                     e = new Envelope(recipient1, game);
                 }
                 sendToServer(e);
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        else if(message.startsWith("#endTurn")){
+            try{
+                sendToServer(game);
             }
             catch(Exception e){
                 e.printStackTrace();
