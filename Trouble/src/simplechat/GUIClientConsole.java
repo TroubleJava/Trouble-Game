@@ -575,12 +575,14 @@ public class GUIClientConsole extends JFrame implements ChatIF {
         endTurn.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
+                //create if statement for tr.playerWin = true;
                 send("#endTurn");
             }
         });
         playTroubleB.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
+                playTroubleB.setEnabled(false);
                 send("#sendTrouble " + messageTxF.getText());
                 for(int i=0;i<tr.numOfPlayers;i++){
                     String player = tr.players[i].getStrUserName() + " is the colour " + tr.players[i].pColour;
@@ -820,7 +822,8 @@ public class GUIClientConsole extends JFrame implements ChatIF {
         sendB.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
-		send(messageTxF.getText());
+                String message = userNameTxF.getText() + ": " + messageTxF.getText();
+		send(message);
             }
         });
         closeB.addActionListener( new ActionListener(){
@@ -907,8 +910,12 @@ public class GUIClientConsole extends JFrame implements ChatIF {
         int piecePosition;
         for(int i=0;i<tr.numOfPlayers;i++){
             boolean pressMe = false;
-            if(tr.objCurrentPlayer.getStrUserName()==tr.players[i].getStrUserName()){
-                pressMe = true;
+            if(tr.objCurrentPlayer.getStrUserName().equals(userNameTxF.getText())){
+                if(tr.objCurrentPlayer.getStrUserName().equals(tr.players[i].getStrUserName())){
+                    pressMe = true;
+                    pop_O_Matic_Bubble.setEnabled(pressMe);
+                    endTurn.setEnabled(pressMe);
+                }
             }
             char col = tr.players[i].getColour();
             switch (col){
@@ -954,8 +961,6 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                 }
             }
         }
-        pop_O_Matic_Bubble.setEnabled(true);
-        endTurn.setEnabled(true);
     }
     
     public void resetAllFullBoard(){
@@ -996,6 +1001,9 @@ public class GUIClientConsole extends JFrame implements ChatIF {
                 }
             }
             theFullMetalBoard[i].setEnabled(false);
+            pop_O_Matic_Bubble.setEnabled(false);
+            pop_O_Matic_Bubble.setText("P O P");
+            endTurn.setEnabled(false);
         }
     }
     public static void main(String[] args) 

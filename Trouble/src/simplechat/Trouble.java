@@ -21,7 +21,6 @@ public class Trouble implements Serializable {
     public objPlayer player4;
     public objPlayer objCurrentPlayer;
     public objPlayer[] players;
-    //public objPiece[] board = new objPiece[27];
     public int currentRoll;
     private boolean moveFromStart = false;
     public boolean playerWin = false;
@@ -116,91 +115,168 @@ public class Trouble implements Serializable {
         currentRoll = roll;
     }
     //Player movement
-    public void move(int position) {
-        int indexSelectedPiece = 1;
+    public void move(int positionOfCurrentPiece) {
+        // Set variable for index of current piece out of bounds
+        int indexOfCurrentPiece = -1;
+        // Loop through current players pieces
         for (int k = 0; k < 4; k++) {
-            if (objCurrentPlayer.piece[k].getPosition() == position) {
-                indexSelectedPiece = objCurrentPlayer.piece[k].getIndex();
+            // Locate a piece where the position matches that of selected piece
+            if (objCurrentPlayer.piece[k].getPosition() == positionOfCurrentPiece) {
+                // Change variable for index to the selected piece
+                indexOfCurrentPiece = objCurrentPlayer.piece[k].getIndex();
+                // Since piece index found exit loop
+                k = 5;
             }
         }
-        //Moving from start
-        if (position == -1){
+        // If the selected piece is from start
+        if (positionOfCurrentPiece == -1){
+            // Check the roll to make sure it's a six, or else the piece cannot move
             if(currentRoll == 6){
-                char cplayer = objCurrentPlayer.getColour();
-                objCurrentPlayer.piece[indexSelectedPiece].setPosition(objCurrentPlayer.getStartIndex(cplayer));
+                // Roll was a six piece might be able to move from start
+                char colourOfCurrentPiece = objCurrentPlayer.getColour();
+                // Before moving need to check if player already has piece at location
+                boolean bolDidILandOnMe = checkLandingOnPlayer(objCurrentPlayer.getStartIndex(colourOfCurrentPiece));
+                // False I did not land on me
+                if(!bolDidILandOnMe){
+                    // Set piece in the correct colors start
+                    objCurrentPlayer.piece[indexOfCurrentPiece].setPosition(objCurrentPlayer.getStartIndex(colourOfCurrentPiece));
+                }
+                // True I landed on me, need to select another piece
+                else{
+                    // Break out??
+                }
             }
         }
-        else {            
-            for (int i = 0; i < numOfPlayers; i++) {
-                for (int j = 0; j < 4; j++) {
-                    //Check for a piece in target location
-                    if (players[i].piece[j].getPosition() == (position + currentRoll)) {
-                        //Check what colour piece is being landed on
-                        if (objCurrentPlayer.getColour() != players[i].getColour()) { 
-                            //Send landed on piece to start
-                            players[i].piece[j].setPosition(-1);
-                            players[i].piece[j].setDistanceFromStart(0);
-                            //Check if roll is outside of bounds
-                            
-                            if ((position + currentRoll) > 27) {
-                                int something = (position + currentRoll) - 28;
-                                //move it's physical position on the GUI
-                                objCurrentPlayer.piece[indexSelectedPiece].setPosition(something);
-                                //increment how far it is from it's start location
-                                objCurrentPlayer.piece[indexSelectedPiece].setDistanceFromStart(currentRoll);
-                            } else {
-                                objCurrentPlayer.piece[indexSelectedPiece].setPosition(position + currentRoll);
-                            }
-                        //If the landed on piece is one of the current players 
-                        } else if (objCurrentPlayer.getColour() == players[i].getColour()) {
-                        //May need to come back to this as it could cause errors
-                            break;
-                        }
-                    } //Landing on home
-//                    else if ((position + currentRoll) == objCurrentPlayer.getHomeIndex(objCurrentPlayer.getColour())) {
-//                        objCurrentPlayer.piece[indexSelectedPiece].setPosition(28);
-                //    } 
-                    else {//Nothing on the spot                    
-                    //Check if roll is outside of bounds
-                        if ((position + currentRoll) > 27) {
-                            int something = (position + currentRoll) - 28;
-                            objCurrentPlayer.piece[indexSelectedPiece].setPosition(something);
-                            objCurrentPlayer.piece[indexSelectedPiece].setDistanceFromStart(currentRoll);
-                        } else {
-                            objCurrentPlayer.piece[indexSelectedPiece].setPosition(position + currentRoll);
-                            objCurrentPlayer.piece[indexSelectedPiece].setDistanceFromStart(currentRoll);
-                        }
+        else{
+            // Obtain the new position piece wants to move to
+            int newPOB = checkCycleOfBoard(positionOfCurrentPiece);
+            // Piece can move, check to see if it will enter it's home location
+            boolean bolAmIAtHome = checkForEntryToHome(positionOfCurrentPiece, newPOB);
+            // False not at home, continue regular movement
+            if(!bolAmIAtHome){
+                // Before moving need to check if player already has piece at location
+                boolean bolDidILandOnMe = checkLandingOnPlayer(newPOB);
+                // False I did not land on me
+                if(!bolDidILandOnMe){
+                    // Sets new location
+                    objCurrentPlayer.piece[indexOfCurrentPiece].setPosition(newPOB);
+                }
+                // True I landed on me, need to select another piece
+                else{
+                    //break out??
+                }
+            }
+            // True I am at home, enter the end spots
+            else{
+                // Sets location to Home
+                objCurrentPlayer.piece[indexOfCurrentPiece].setPosition(28);
+            }
+        }
+        // Check for a win condition
+        checkWin();
+    }
+    
+    //Check to see if piece must pass through the 27 & 0 corner of board
+    public int checkCycleOfBoard(int positionOfCurrentPiece){
+        // Using current position and the die roll total new location
+        int newPositionOnBoard = positionOfCurrentPiece + currentRoll;
+        // If new location is outside board bounds it is rounding the corner
+        if (newPositionOnBoard > 27) {
+            // Subtract the board length to obtain the new position
+            newPositionOnBoard = newPositionOnBoard - 28;
+        }
+        // Return new position of piece
+        return newPositionOnBoard;
+    }
+    
+    //Check to see if the player is landing on another player or themselves
+    public boolean checkLandingOnPlayer(int newPOB){
+        // Set condition to false
+        boolean bolLanded = false;
+        // Loop through each player
+        for (int i = 0; i < numOfPlayers; i++) {
+            // Loop through each players piece
+            for (int j = 0; j < 4; j++) {
+                // If a piece holds the same position as the new position
+                if (players[i].piece[j].getPosition() == newPOB) {
+                    // Is the piece the same as the current players
+                    if (objCurrentPlayer.getColour() != players[i].getColour()) { 
+                        // Piece is another players, send it back to it's start
+                        players[i].piece[j].setPosition(-1);
+                    }
+                    // Piece is the same colour as the current players
+                    else{
+                        // Landed on own piece, invalid move
+                        bolLanded = true;
                     }
                 }
             }
         }
-        checkWin();
+        // Return condition
+        return bolLanded;
     }
-
+    // Check piece for movement into it's home
+    public boolean checkForEntryToHome(int positionOfCurrentPiece, int newPOB){
+        // Set condition to false
+        boolean bolAtHome = false;
+        // Red has to follow seperate rules for location if piece can go home
+        if(objCurrentPlayer.getColour() == 'R'){
+            if((positionOfCurrentPiece+currentRoll) > objCurrentPlayer.getHomeIndex(objCurrentPlayer.getColour())){
+                bolAtHome = true;
+            }
+        }
+        // Check home rules for all other colours
+        else{
+            // Check current position of piece, is it less than players home index
+            if(positionOfCurrentPiece <= objCurrentPlayer.getHomeIndex(objCurrentPlayer.getColour())){
+                // Check new position of piece, is it equal to or greater than it's start index
+                if(newPOB >= objCurrentPlayer.getStartIndex(objCurrentPlayer.getColour())){
+                    // Both conditions are true meaning piece is moving past home, instead send it home
+                    bolAtHome = true;
+                }
+            }
+        }
+        // Return condition
+        return bolAtHome;
+    }
     //Last thing to do on a turn
     public void checkWin() {
         //Check amount of pieces in home
         int homeCount = 0;
-        for (int l = 0; l < 4; l++) {
-            if (objCurrentPlayer.piece[l].fromStart() == 28) {
+        // Loop through a players pieces
+        for(int j = 0; j < 4; j++){
+            // Check to see if the position of piece is home
+            if(objCurrentPlayer.piece[j].getPosition() == 28){
+                // Piece is in home increase the home count
                 homeCount++;
             }
         }
+        // Check to see if home count equals all player pieces
         if (homeCount == 4) {
             //YOU WIN!!!
             playerWin = true;   
         }
         //Continue with game
         //Player gets another turn
-        else if (currentRoll == 6) { 
+        else if (currentRoll == 6) {
             hasExtraTurn = true;
+            // Loop through all players
             for(int i = 0; i < numOfPlayers; i++){
+                // Locate the player in array that is also the current player 
                 if(players[i] == objCurrentPlayer){
-                    if(i == 1){
-                        setCurrentPlayer(players[numOfPlayers-1]);
+                    // Is the current player the first player in the array
+                    if(i == 0){
+                        // Set current player to the previous player
+                        //setCurrentPlayer(players[numOfPlayers]);
+                        // With this now set to previous when switching players
+                        // The current player will again be the player who took this turn
                     }
+                    // Current player is any other player in the array
                     else{
+                        // Set current player to the previous player
                         setCurrentPlayer(players[i - 1]);
+                        // With this now set to previous when switching players
+                        // The current player will again be the player who took this turn
                     }
                 }
             }
